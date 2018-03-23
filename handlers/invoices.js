@@ -22,6 +22,24 @@ let create = (event, context, callback) => {
 }
 
 /**
+ * Create Draft handler
+ *
+ * @param {Object} event
+ * @param {Object} context
+ * @param {Function} callback
+ */
+
+let createDraft = (event, context, callback) => {
+  let data = JSON.parse(event.body)
+
+  invoices
+    .createDraft(data)
+    .then((result) => successHandler(result, callback))
+    .catch((err) => callback(err))
+
+}
+
+/**
  * Get All handler
  *
  * @param {Object} event
@@ -53,6 +71,7 @@ let getById = (event, context, callback) => {
 
 module.exports = {
   create,
+  createDraft,
   getAll,
   getById
 }

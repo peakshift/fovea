@@ -19,6 +19,15 @@ functions:
           path: invoice
           method: post
           cors: true
+
+  invoices-create-draft:
+      handler: handlers/invoices.createDraft
+      events:
+        - http:
+            path: invoice-draft
+            method: post
+            cors: true
+
   invoices-get-all:
     handler: handlers/invoices.getAll
     events:
@@ -26,6 +35,7 @@ functions:
           path: invoices
           method: get
           cors: true
+
   invoices-get-by-id:
     handler: handlers/invoices.getById
     events:
@@ -37,6 +47,7 @@ functions:
             parameters:
               paths:
                 id: true
+
   clients-create:
     handler: handlers/clients.create
     events:
@@ -44,6 +55,7 @@ functions:
           path: client
           method: post
           cors: true
+
   clients-get-all:
     handler: handlers/clients.getAll
     events:
@@ -51,6 +63,7 @@ functions:
           path: clients
           method: get
           cors: true
+
   clients-get-by-id:
       handler: handlers/clients.getById
       events:
@@ -62,6 +75,7 @@ functions:
               parameters:
                 paths:
                   id: true
+
   payments-create:
     handler: handlers/payments.create
     events:
@@ -69,6 +83,7 @@ functions:
           path: payment
           method: post
           cors: true
+
   payments-get-all:
     handler: handlers/payments.getAll
     events:
@@ -76,6 +91,7 @@ functions:
           path: payments
           method: get
           cors: true
+
   payments-get-by-id:
         handler: handlers/payments.getById
         events:
