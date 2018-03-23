@@ -12,26 +12,47 @@ package:
 
 functions:
 
-  createInvoice:
+  invoices-create:
     handler: handlers/invoices.create
     events:
       - http:
           path: invoice
           method: post
           cors: true
-  createClient:
+  invoices-get-all:
+    handler: handlers/invoices.getAll
+    events:
+      - http:
+          path: invoices
+          method: get
+          cors: true
+  clients-create:
     handler: handlers/clients.create
     events:
       - http:
           path: client
           method: post
           cors: true
-  createPayment:
+  clients-get-all:
+    handler: handlers/clients.getAll
+    events:
+      - http:
+          path: clients
+          method: get
+          cors: true
+  payments-create:
     handler: handlers/payments.create
     events:
       - http:
           path: payment
           method: post
+          cors: true
+  payments-get-all:
+    handler: handlers/payments.getAll
+    events:
+      - http:
+          path: payments
+          method: get
           cors: true
 
 plugins:

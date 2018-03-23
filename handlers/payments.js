@@ -1,6 +1,6 @@
 'use strict'
 
-let payments = require('../lib/payments/create')
+let payments = require('../lib/payments/index')
 let { successHandler } = require('./shared')
 
 /**
@@ -21,6 +21,21 @@ let create = (event, context, callback) => {
 
 }
 
+/**
+ * Get All handler
+ *
+ * @param {Object} event
+ * @param {Object} context
+ * @param {Function} callback
+ */
+let getAll = (event, context, callback) => {
+  payments
+    .getAll()
+    .then((result) => successHandler(result, callback))
+    .catch((err) => callback(err))
+}
+
 module.exports = {
-  create
+  create,
+  getAll
 }
