@@ -1,6 +1,6 @@
 'use strict'
 
-let invoices = require('../lib/create/index')
+let payments = require('../lib/payments/create')
 let { successHandler } = require('./shared')
 
 /**
@@ -12,11 +12,9 @@ let { successHandler } = require('./shared')
  */
 
 let create = (event, context, callback) => {
-  console.log(event)
   let data = JSON.parse(event.body)
-  console.log('this is the return data')
-  console.log(data);
-  invoices
+
+  payments
     .create(data)
     .then((result) => successHandler(result, callback))
     .catch((err) => callback(err))
