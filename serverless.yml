@@ -26,6 +26,17 @@ functions:
           path: invoices
           method: get
           cors: true
+  invoices-get-by-id:
+    handler: handlers/invoices.getById
+    events:
+      - http:
+          path: invoice/{id}
+          method: get
+          cors: true
+          request:
+            parameters:
+              paths:
+                id: true
   clients-create:
     handler: handlers/clients.create
     events:
@@ -40,6 +51,17 @@ functions:
           path: clients
           method: get
           cors: true
+  clients-get-by-id:
+      handler: handlers/clients.getById
+      events:
+        - http:
+            path: client/{id}
+            method: get
+            cors: true
+            request:
+              parameters:
+                paths:
+                  id: true
   payments-create:
     handler: handlers/payments.create
     events:
@@ -54,6 +76,17 @@ functions:
           path: payments
           method: get
           cors: true
+  payments-get-by-id:
+        handler: handlers/payments.getById
+        events:
+          - http:
+              path: payment/{id}
+              method: get
+              cors: true
+              request:
+                parameters:
+                  paths:
+                    id: true
 
 plugins:
   - serverless-webpack

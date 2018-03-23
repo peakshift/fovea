@@ -35,7 +35,24 @@ let getAll = (event, context, callback) => {
     .catch((err) => callback(err))
 }
 
+/**
+ * Get by ID handler
+ *
+ * @param {Object} event
+ * @param {Object} context
+ * @param {Function} callback
+ */
+let getById = (event, context, callback) => {
+  let { id } = event.pathParameters
+
+  payments
+    .getById(id)
+    .then((result) => successHandler(result, callback))
+    .catch((err) => callback(err))
+}
+
 module.exports = {
   create,
-  getAll
+  getAll,
+  getById
 }
