@@ -16,17 +16,13 @@ functions:
     handler: handlers/invoices.create
     events:
       - http:
-          path: invoice
+          path: invoices
           method: post
           cors: true
-
-  invoices-create-draft:
-      handler: handlers/invoices.createDraft
-      events:
-        - http:
-            path: invoice-draft
-            method: post
-            cors: true
+          request:
+            parameters:
+              querystrings:
+                status: true
 
   invoices-get-all:
     handler: handlers/invoices.getAll
@@ -40,8 +36,45 @@ functions:
     handler: handlers/invoices.getById
     events:
       - http:
-          path: invoice/{id}
+          path: invoices/{id}
           method: get
+          cors: true
+          request:
+            parameters:
+              paths:
+                id: true
+
+  payments-get:
+    handler: handlers/payments.get
+    events:
+      - http:
+          path: invoices/{id}/payments
+          method: get
+          cors: true
+          request:
+            parameters:
+              paths:
+                id: true
+
+  payments-get-single:
+    handler: handlers/payments.getSingle
+    events:
+      - http:
+          path: invoices/{id}/payments/{transactionId}
+          method: get
+          cors: true
+          request:
+            parameters:
+              paths:
+                id: true
+                transactionId: true
+
+  payments-create:
+    handler: handlers/payments.create
+    events:
+      - http:
+          path: invoices/{id}/payments
+          method: post
           cors: true
           request:
             parameters:
@@ -52,7 +85,7 @@ functions:
     handler: handlers/clients.create
     events:
       - http:
-          path: client
+          path: clients
           method: post
           cors: true
 
@@ -68,41 +101,13 @@ functions:
       handler: handlers/clients.getById
       events:
         - http:
-            path: client/{id}
+            path: clients/{id}
             method: get
             cors: true
             request:
               parameters:
                 paths:
                   id: true
-
-  payments-create:
-    handler: handlers/payments.create
-    events:
-      - http:
-          path: payment
-          method: post
-          cors: true
-
-  payments-get-all:
-    handler: handlers/payments.getAll
-    events:
-      - http:
-          path: payments
-          method: get
-          cors: true
-
-  payments-get-by-id:
-        handler: handlers/payments.getById
-        events:
-          - http:
-              path: payment/{id}
-              method: get
-              cors: true
-              request:
-                parameters:
-                  paths:
-                    id: true
 
 plugins:
   - serverless-webpack
