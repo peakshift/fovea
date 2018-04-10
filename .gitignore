@@ -1,7 +1,11 @@
 # package directories
 node_modules
 jspm_packages
+lib/transformer/virtual_env/lib
 
 # Serverless directories
 .serverless
 .idea
+
+ # Environments
+ .env
