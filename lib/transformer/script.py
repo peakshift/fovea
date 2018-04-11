@@ -1,39 +1,16 @@
+import os
 from dotenv import load_dotenv
+from functions import csv_to_list, write_to_csv
+
 load_dotenv()
 
-import os
-import csv
-
-# Read csv file
 original_csv = os.getenv("ORIGINAL_CSV_FILE")
 transformed_csv = os.getenv("TRANSFORMED_CSV_FILE")
+fieldnames_1 = ['TransactionDate', 'Description', 'Payee', 'Reference', 'Debit', 'Credit']
+fieldnames_2 = ['TransactionDate', 'Description', 'Payee', 'Reference', 'Amount']
 
-with open(original_csv, 'r') as csv_file:
-    fieldnames = ['TransactionDate', 'Description', 'Payee', 'Reference', 'Debit', 'Credit']
-    reader = csv.DictReader(csv_file, fieldnames=fieldnames)
+# Get transactions list from csv file
+reader = csv_to_list( original_csv, fieldnames_1 )
 
-    # Write csv file
-    with open(transformed_csv, 'w') as new_csv_file:
-        writer = csv.DictWriter(new_csv_file, fieldnames=['TransactionDate', 'Description', 'Payee', 'Reference', 'Amount'])
-
-        # Include fieldnames in file
-        writer.writeheader()
-
-        for index, row in enumerate(reader):
-            # Skip old header row
-            if index == 0:
-                continue
-
-            # Replace 'debit' and 'credit' fields with 'transaction amount'
-            debit = row['Debit']
-            credit = row['Credit']
-
-            if debit == '':
-                row['Amount'] = credit
-            elif credit == '':
-                row['Amount'] = debit
-
-            del row['Debit']
-            del row['Credit']
-
-            writer.writerow(row)
+# Create new csv file for transactions
+write_to_csv( transformed_csv, reader, fieldnames_2 )
