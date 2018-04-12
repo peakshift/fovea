@@ -6,7 +6,7 @@ load_dotenv()
 
 original_csv = os.getenv("ORIGINAL_CSV_FILE")
 transformed_csv = os.getenv("TRANSFORMED_CSV_FILE")
-fieldnames_1 = ['TransactionDate', 'Description', 'Payee', 'Reference', 'Debit', 'Credit']
+fieldnames_1 = ['TransactionDate', 'Description', 'Payee', 'Reference', 'Credit', 'Debit']
 fieldnames_2 = ['TransactionDate', 'Description', 'Payee', 'Reference', 'Amount']
 
 # Get transactions list from csv file

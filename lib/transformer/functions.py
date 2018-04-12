@@ -32,7 +32,7 @@ def transform_row( row ):
     credit = row['Credit']
 
     if debit == '':
-        row['Amount'] = credit
+        row['Amount'] = float(credit) * -1
     elif credit == '':
         row['Amount'] = debit
 
