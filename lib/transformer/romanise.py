@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 
-# Translitteration of a bulgarian letter to a latin letter
+# Translitteration of a bulgarian letter to a latin letter.
 #
-# @param letter {string} - s cylyric letter to look up 
-# to transform it to a corresponding latin one. 
-# We transform the strings that gets passed to unicode as 
+# We transform the strings that gets passed to unicode, as 
 # capital cylyric letters do not get lowered if 
-# the string lower() method is used unless we convertd the  
-# strings to unicode data types. 
+# the string.lower() method is used, unless we convertd the  
+# strings to unicode data types first. 
+#
+# @param letter {string} - a cylyric letter to look up to transform it to a corresponding latin one. 
+# @return - the corresponding latin letter
 
 def romanise(letter):
 	bulgarian_alphabet = {
@@ -46,6 +47,8 @@ def romanise(letter):
 	unicode_letter = letter.decode('utf-8')
 	lowercase_letter = unicode_letter.lower()
 	print(bulgarian_alphabet[lowercase_letter])
+ 
+# Example usage
 
 romanise("Ю") # expects yu
 romanise("ю") # expects yu
