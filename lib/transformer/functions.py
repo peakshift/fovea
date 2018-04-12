@@ -2,13 +2,17 @@ import csv
 
 # Get list from csv file
 def csv_to_list( file, fieldnames=None ):
-    with open(file, 'r') as csv_file:
+    file_path = 'csv_files/original/' + file
+
+    with open(file_path, 'r') as csv_file:
         reader = csv.DictReader(csv_file, fieldnames=fieldnames)
         return list(reader);
 
 # Create new csv file
 def write_to_csv( file_to_write, dict_to_read, fieldnames=None ):
-    with open(file_to_write, 'w') as new_csv_file:
+    file_path = 'csv_files/transformed/' + file_to_write
+
+    with open(file_path, 'w') as new_csv_file:
         writer = csv.DictWriter(new_csv_file, fieldnames=fieldnames)
 
         # Include fieldnames in file
