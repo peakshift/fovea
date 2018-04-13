@@ -1,4 +1,5 @@
 import csv
+from romanise import cyr_to_latin
 
 # Get list from csv file
 def csv_to_list( file, fieldnames=None ):
@@ -30,11 +31,12 @@ def write_to_csv( file_to_write, dict_to_read, fieldnames=None ):
             writer.writerow(new_row)
 
 
-# Transform row to replace 'debit' and 'credit' fields with 'transaction amount'
+# Transform row
 def transform_row( row ):
     debit = row['Debit']
     credit = row['Credit']
 
+    # Replace 'debit' and 'credit' fields with 'transaction amount'
     if debit == '':
         row['Amount'] = float(credit) * -1
     elif credit == '':
@@ -42,4 +44,9 @@ def transform_row( row ):
 
     del row['Debit']
     del row['Credit']
+
+    # Convert cyrillic letters to latin
+    row['Description'] = cyr_to_latin(row['Description'])
+    row['Payee'] = cyr_to_latin(row['Payee'])
+
     return row;
