@@ -13,6 +13,26 @@ Feature:
     When the request is received
     Then the response status code should be 201
 
+  Scenario: Create a project with missing fields
+    Given a POST request in /projects with
+      ```
+      {
+        "name": "Blossom",
+        "status": "0",
+        "description": "blockchain project"
+      }
+      ```
+    When the request is received
+    Then the response status code should be 400
+
+  Scenario: Create a project with no fields
+    Given a POST request in /projects with
+      ```
+      {...}
+      ```
+    When the request is received
+    Then the response status code should be 400
+
   Scenario: Get all projects
     Given GET request is made to /projects
     When the request is received
@@ -138,6 +158,11 @@ Feature:
       }
       ```
 
+  Scenario: Get a specific project by an invalid ID
+    Given a GET request is made to /projects/:id/
+    When the request is received
+    Then a response status of 400 is returned
+
   Scenario: Update a specific project by ID
     Given a PUT request is made to /projects/:id/
     When the request is recieved
@@ -180,6 +205,11 @@ Feature:
     When the request is recieved 
     Then a response status of 200 is returned
     And the updated fields will be displayed in the returned json object
+
+  Scenario: Update a specific project field by ID with invalid data
+    Given a PUT request is made to /projects/:id/
+    When the request is received
+    Then a response status of 400 is returned
 
   Scenario: Delete a specific project by ID
     Given a DELETE request is made for /projects/:id
