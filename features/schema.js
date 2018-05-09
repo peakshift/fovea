@@ -34,7 +34,6 @@ let schema = {
     'name',
     'ID',
     'status',
-    'description'
     'hours'
     'client'
   ],
