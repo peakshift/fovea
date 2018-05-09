@@ -13,7 +13,8 @@ Feature: Get Projects API
     And the data is returned as a json object equal to
     """
       [
-        { "ID": "blsm", 
+        { 
+          "ID": "blsm", 
           "name": "Blossom",
           "status": 0,
           "description": "blockchain project",
@@ -130,7 +131,7 @@ Feature: Get Projects API
       }
     """
 
-  Scenario: Validate GET request with invalid ID
+  Scenario: Validate GET request with unlisted ID
     Given the system knows about the database
     When a GET request is made to /projects/:id/
     Then a response status code of 400 is returned 

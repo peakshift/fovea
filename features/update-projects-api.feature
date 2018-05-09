@@ -49,12 +49,14 @@ Feature: Update Projects API
     Then a response status code of 200 is returned
     And the updated fields will be displayed in the returned json object
 
-  Scenario: Validate invalid data cannot be used to update project status
+  Scenario: Validate invalid datatype cannot be used to update project status
     Given the system knows about the database 
     When a PUT request is made to /projects/:id/:status
+    And the request is not an integer
     Then the response status code of 400 is returned
 
-  Scenario: Validate invalid data cannot be used to update project hours
+  Scenario: Validate invalid datatype cannot be used to update project hours
     Given the system knows about the database
     When a PUT request is made to /projects/:id/:hours
+    And the request is not a number
     Then the response status code of 400 is returned

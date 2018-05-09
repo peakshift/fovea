@@ -13,3 +13,11 @@ Only authorised persons can perform such actions
     When a DELETE request is made for /projects/:id
     Then a response status code of 204 is returned
     And the json object is returned as NULL
+
+  Scenario: Delete a project with an unlisted ID
+    Given the system knows about the database 
+    And I have authorisation
+    When a DELETE request is made for /projects/:id
+    Then a response status code of 400 is returned
+
+
