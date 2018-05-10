@@ -5,7 +5,7 @@ Feature: Create Projects API
         | ID    | name        | status | description        | hours | client   | 
   
   Scenario: Create a project
-    When a POST request is made in /projects with
+    When a POST request is made to /projects with
     """
       {
         "name": "Blossom",
@@ -15,10 +15,11 @@ Feature: Create Projects API
         "client": "Blossom1"
       }
     """
-    Then the response status code should be 201
+    Then a response status code of 201 is returned
+    And the "Content-Type" header is "application/json"
 
   Scenario: Create a project with a missing Name field
-    When a POST request is made in /projects with
+    When a POST request is made to /projects with
     """
       {
         "status": 0,
@@ -27,10 +28,11 @@ Feature: Create Projects API
         "client": "Blossom1"
       }
     """
-    Then the response status code should be 400
+    Then a response status code of 400 is returned
+    And the "Content-Type" header is "application/json"
 
   Scenario: Create a project with a missing Status field
-    When a POST request in /projects with
+    When a POST request is made to /projects with
     """
       {
         "name": "Blossom",
@@ -39,10 +41,11 @@ Feature: Create Projects API
         "client": "Blossom1"
       }
     """
-    Then the response status code should be 400
+    Then a response status code of 400 is returned
+    And the "Content-Type" header is "application/json"
 
   Scenario: Create a project with a missing Description field
-    When a POST request in /projects with
+    When a POST request is made to /projects with
     """
       {
         "name": "Blossom",
@@ -51,10 +54,11 @@ Feature: Create Projects API
         "client": "Blossom1"
       }
     """
-    Then the response status code should be 400
+    Then a response status code of 400 is returned
+    And the "Content-Type" header is "application/json"
 
   Scenario: Create a project with a missing Hours field
-    When a POST request in /projects with
+    When a POST request is made to /projects with
     """
       {
         "name": "Blossom",
@@ -63,10 +67,11 @@ Feature: Create Projects API
         "client": "Blossom1"
       }
     """
-    Then the response status code should be 400
+    Then a response status code of 400 is returned
+    And the "Content-Type" header is "application/json"
 
   Scenario: Create a project with a missing Client field
-    When a POST request in /projects with
+    When a POST request is made to /projects with
     """
       {
         "name": "Blossom",
@@ -75,13 +80,15 @@ Feature: Create Projects API
         "hours": 90,
       }
     """
-    Then the response status code should be 400 
+    Then a response status code of 400 is returned
+    And the "Content-Type" header is "application/json" 
 
   Scenario: Create a project with no fields
-    When a POST request in /projects with
+    When a POST request is made to /projects with
     """
       {}
     """
-    Then the response status code should be 400
+    Then a response status code of 400 is returned
+    And the "Content-Type" header is "application/json"
 
   

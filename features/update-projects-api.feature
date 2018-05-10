@@ -10,44 +10,46 @@ Feature: Update Projects API
     Given the system knows about the database
     When a PUT request is made to /projects/:id
     Then a response status code of 200 is returned
-    And the update is displayed in the returned json object
+    And the "Content-Type" header is "application/json"
 
   Scenario: Update a specific project Name by ID
     Given the system knows about the database
     When a PUT request is made to /projects/:id/:name
     Then a response status code of 200 is returned
-    And the new name is displayed in the returned json object
+    And the "Content-Type" header is "application/json"
 
   Scenario: Update a specific project Status by ID
     Given the system knows about the database
     When a PUT request is made to /projects/:id/:status
     Then a response status code of 200 is returned
-    And the project status is changed in the returned json object
+    And the "Content-Type" header is "application/json"
 
   Scenario: Update a specific project Description by ID
     Given a PUT request is made to /projects/:id/:description
     When the request is recieved
-    Then a response status code of 200 is returned 
-    And the new project description is displayed in the returned json object
+    Then a response status code of 200 is returned
+    And the "Content-Type" header is "application/json"
 
   Scenario: Update a specific project Hours by ID
     Given the system knows about the database
     When a PUT request is made to /projects/:id/:hours 
     Then a response status code of 200 is returned
-    And the project hours is changed in the returned json object
+    And the "Content-Type" header is "application/json"
 
   Scenario: Update a specific project Client by ID
     Given the system knows about the database
     When a PUT request is made to /projects/:id/:clients
     Then a response status code of 200 is returned
-    And the new client name is displayed in the returned json object
+    And the "Content-Type" header is "application/json"
 
   Scenario: Validate invalid datatype cannot be used to update project status
     Given the system knows about the database 
     When a PUT request is made to /projects/:id/:status
     Then a response status code of 400 is returned
+    And the "Content-Type" header is "application/json"
 
   Scenario: Validate invalid datatype cannot be used to update project hours
     Given the system knows about the database
     When a PUT request is made to /projects/:id/:hours
     Then a response status code of 400 is returned
+    And the "Content-Type" header is "application/json"

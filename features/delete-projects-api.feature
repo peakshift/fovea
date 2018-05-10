@@ -8,11 +8,13 @@ Only authorised persons can perform such actions
     And I have authorisation
 
   Scenario: Delete a specific project by ID
-    When a DELETE request is made for /projects/:id
+    When a DELETE request is made to /projects/:id
     Then a response status code of 204 is returned
+    And the "Content-Type" header is "application/json"
 
-  Scenario: Delete a project with an unlisted ID
-    When a DELETE request is made for /projects/:id
+  Scenario: Deny request to delete a project with an invalid ID
+    When a DELETE request is made to /projects/:id
     Then a response status code of 400 is returned
+    And the "Content-Type" header is "application/json"
 
 

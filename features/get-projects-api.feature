@@ -10,7 +10,8 @@ Feature: Get Projects API
     Given the system knows about the database
     When a GET request is made to /projects
     Then a response status code of 200 is returned
-    And the data is returned as a json object equal to
+    And the "Content-Type" header is "application/json"
+    And the response body is 
     """
       [
         { 
@@ -28,7 +29,8 @@ Feature: Get Projects API
     Given the system knows about the database
     When a GET request is made to /projects/:status
     Then a response status code of 200 is returned
-    And the data is returned as a json object equal to 
+    And the "Content-Type" header is "application/json"
+    And the response body is
     """
       [
         {
@@ -46,7 +48,8 @@ Feature: Get Projects API
     Given the system knows about the database
     When a GET request is made to /projects/:client
     Then a response status code of 200 is returned
-    And the data is returned as a json object equal to
+    And the "Content-Type" header is "application/json"
+    And the response body is
     """
       [
         {
@@ -64,7 +67,8 @@ Feature: Get Projects API
     Given the system knows about the database
     When a GET request is made to /projects/:id
     Then a response status code of 200 is returned
-    And the data is returned as a json object equal to
+    And the "Content-Type" header is "application/json"
+    And the response body is
     """
       { 
         "ID": "blsm",
@@ -80,7 +84,8 @@ Feature: Get Projects API
     Given the system knows about the database
     When a GET request is made to /projects/:id/:name
     Then a response status code of 200 is returned
-    And the data is returned as a json object equal to
+    And the "Content-Type" header is "application/json"
+    And the response body is
     """
       {
         "name": "Blossom"
@@ -91,7 +96,8 @@ Feature: Get Projects API
     Given the system knows about the database
     When a GET request is made to /projects/:id/:status
     Then a response status code of 200 is returned
-    And the data is returned as a json object equal to
+    And the "Content-Type" header is "application/json"
+    And the response body is
     """
       {
         "status": 0
@@ -102,7 +108,8 @@ Feature: Get Projects API
     Given the system knows about the database
     When a GET request is made to /projects/:id/:description
     Then a response status code of 200 is returned
-    And the data is returned as a json object equal to
+    And the "Content-Type" header is "application/json"
+    And the response body is
     """
       {
         "description": "blockchain project"
@@ -113,7 +120,8 @@ Feature: Get Projects API
     Given the system knows about the database
     When a GET request is made to /projects/:id/:hours
     Then a response status code of 200 is returned
-    And the data is returned as a json object equal to
+    And the "Content-Type" header is "application/json"
+    And the response body is
     """
       {
         "hours": 90
@@ -124,14 +132,16 @@ Feature: Get Projects API
     Given the system knows about the database
     When a GET request is made to /projects/:id/:client
     Then a response status code of 200 is returned
-    And the data is returned as a json object equal to
+    And the "Content-Type" header is "application/json"
+    And the response body is
     """
       {
         "client": "Blossom1"
       }
     """
 
-  Scenario: Validate GET request with unlisted ID
+  Scenario: Validate GET request with an invalid ID
     Given the system knows about the database
     When a GET request is made to /projects/:id/
     Then a response status code of 400 is returned 
+    And the "Content-Type" header is "application/json"
