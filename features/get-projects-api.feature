@@ -7,8 +7,8 @@ Feature: Get Projects API
 
 
   Scenario: Get all projects
-    Given GET request is made to /projects
-    When the request is received
+    Given the system knows about the database
+    When a GET request is made to /projects
     Then a response status code of 200 is returned
     And the data is returned as a json object equal to
     """
@@ -25,8 +25,8 @@ Feature: Get Projects API
     """
   
   Scenario: Get all projects with a specific status
-    Give a GET request is made to /projects/:status
-    When the request is received
+    Given the system knows about the database
+    When a GET request is made to /projects/:status
     Then a response status code of 200 is returned
     And the data is returned as a json object equal to 
     """
@@ -43,8 +43,8 @@ Feature: Get Projects API
     """
   
   Scenario: Get all projects from a specific client
-    Given a GET request is made to /projects/:client
-    When the request is received
+    Given the system knows about the database
+    When a GET request is made to /projects/:client
     Then a response status code of 200 is returned
     And the data is returned as a json object equal to
     """
@@ -61,8 +61,8 @@ Feature: Get Projects API
     """
 
   Scenario: Get a specific project by ID
-    Given a GET request is made to /projects/:id
-    When the request is received
+    Given the system knows about the database
+    When a GET request is made to /projects/:id
     Then a response status code of 200 is returned
     And the data is returned as a json object equal to
     """
@@ -77,8 +77,8 @@ Feature: Get Projects API
     """
   
   Scenario: Get a specific project Name by ID
-    Given a GET request is made to /projects/:id/:name
-    When the request is received
+    Given the system knows about the database
+    When a GET request is made to /projects/:id/:name
     Then a response status code of 200 is returned
     And the data is returned as a json object equal to
     """
@@ -88,8 +88,8 @@ Feature: Get Projects API
     """
       
   Scenario: Get a specific project Status by ID
-    Given a GET request is made to /projects/:id/:status
-    When the request is received
+    Given the system knows about the database
+    When a GET request is made to /projects/:id/:status
     Then a response status code of 200 is returned
     And the data is returned as a json object equal to
     """
@@ -99,8 +99,8 @@ Feature: Get Projects API
     """
  
   Scenario: Get a specific project Description by ID
-    Given a GET request is made to /projects/:id/:description
-    When the request is received
+    Given the system knows about the database
+    When a GET request is made to /projects/:id/:description
     Then a response status code of 200 is returned
     And the data is returned as a json object equal to
     """
@@ -110,8 +110,8 @@ Feature: Get Projects API
     """
   
   Scenario: Get a specific project Hours by ID
-    Given a GET request is made to /projects/:id/:hours
-    When the request is received
+    Given the system knows about the database
+    When a GET request is made to /projects/:id/:hours
     Then a response status code of 200 is returned
     And the data is returned as a json object equal to
     """
@@ -121,8 +121,8 @@ Feature: Get Projects API
     """
   
   Scenario: Get a specific project Client by ID
-    Given a GET request is made to /projects/:id/:client
-    When the request is received
+    Given the system knows about the database
+    When a GET request is made to /projects/:id/:client
     Then a response status code of 200 is returned
     And the data is returned as a json object equal to
     """
