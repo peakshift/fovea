@@ -42,13 +42,13 @@ Feature: Update Projects API
     Then a response status code of 200 is returned
     And the "Content-Type" header is "application/json"
 
-  Scenario: Validate invalid datatype cannot be used to update project status
+  Scenario: Deny project status update request with invalid datatype
     Given the system knows about the database 
     When a PUT request is made to /projects/:id/:status
     Then a response status code of 400 is returned
     And the "Content-Type" header is "application/json"
 
-  Scenario: Validate invalid datatype cannot be used to update project hours
+  Scenario: Deny project hours update request with invalid datatype
     Given the system knows about the database
     When a PUT request is made to /projects/:id/:hours
     Then a response status code of 400 is returned

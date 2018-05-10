@@ -18,7 +18,7 @@ Feature: Create Projects API
     Then a response status code of 201 is returned
     And the "Content-Type" header is "application/json"
 
-  Scenario: Create a project with a missing Name field
+  Scenario: Deny request to create a project with a missing Name field
     When a POST request is made to /projects with
     """
       {
@@ -31,7 +31,7 @@ Feature: Create Projects API
     Then a response status code of 400 is returned
     And the "Content-Type" header is "application/json"
 
-  Scenario: Create a project with a missing Status field
+  Scenario: Deny request to create a project with a missing Status field
     When a POST request is made to /projects with
     """
       {
@@ -44,7 +44,7 @@ Feature: Create Projects API
     Then a response status code of 400 is returned
     And the "Content-Type" header is "application/json"
 
-  Scenario: Create a project with a missing Description field
+  Scenario: Deny request to create a project with a missing Description field
     When a POST request is made to /projects with
     """
       {
@@ -57,7 +57,7 @@ Feature: Create Projects API
     Then a response status code of 400 is returned
     And the "Content-Type" header is "application/json"
 
-  Scenario: Create a project with a missing Hours field
+  Scenario: Deny request to create a project with a missing Hours field
     When a POST request is made to /projects with
     """
       {
@@ -70,7 +70,7 @@ Feature: Create Projects API
     Then a response status code of 400 is returned
     And the "Content-Type" header is "application/json"
 
-  Scenario: Create a project with a missing Client field
+  Scenario: Deny request to create a project with a missing Client field
     When a POST request is made to /projects with
     """
       {
@@ -83,7 +83,7 @@ Feature: Create Projects API
     Then a response status code of 400 is returned
     And the "Content-Type" header is "application/json" 
 
-  Scenario: Create a project with no fields
+  Scenario: Deny request to create a project with no fields
     When a POST request is made to /projects with
     """
       {}

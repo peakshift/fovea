@@ -140,8 +140,20 @@ Feature: Get Projects API
       }
     """
 
-  Scenario: Validate GET request with an invalid ID
+  Scenario: Deny request to get projects with an invalid ID
     Given the system knows about the database
-    When a GET request is made to /projects/:id/
+    When a GET request is made to /projects/:id
+    Then a response status code of 400 is returned 
+    And the "Content-Type" header is "application/json"
+
+  Scenario: Deny request to get projects with an invalid Client ID
+    Given the system knows about the database
+    When a GET request is made to /projects/:client
+    Then a response status code of 400 is returned 
+    And the "Content-Type" header is "application/json"
+
+  Scenario: Deny request to get projects with an invalid Status code
+    Given the system knows about the database
+    When a GET request is made to /projects/:status
     Then a response status code of 400 is returned 
     And the "Content-Type" header is "application/json"
