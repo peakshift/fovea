@@ -25,8 +25,8 @@ Feature: Update Projects API
     And the "Content-Type" header is "application/json"
 
   Scenario: Update a specific project Description by ID
-    Given a PUT request is made to /projects/:id/:description
-    When the request is recieved
+    Given the system knows about the database
+    When a PUT request is made to /projects/:id/:hours 
     Then a response status code of 200 is returned
     And the "Content-Type" header is "application/json"
 
