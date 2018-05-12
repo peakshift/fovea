@@ -10,46 +10,46 @@ Feature: Update Projects API
     Given the system knows about the database
     When a PUT request is made to /projects/:id
     Then a response status code of 200 is returned
-    And the "Content-Type" header is "application/json"
+    And the "Content-Type" header value is "application/json"
 
   Scenario: Update a specific project Name by ID
     Given the system knows about the database
     When a PUT request is made to /projects/:id/:name
     Then a response status code of 200 is returned
-    And the "Content-Type" header is "application/json"
+    And the "Content-Type" header value is "application/json"
 
   Scenario: Update a specific project Status by ID
     Given the system knows about the database
     When a PUT request is made to /projects/:id/:status
     Then a response status code of 200 is returned
-    And the "Content-Type" header is "application/json"
+    And the "Content-Type" header value is "application/json"
 
   Scenario: Update a specific project Description by ID
     Given the system knows about the database
     When a PUT request is made to /projects/:id/:hours 
     Then a response status code of 200 is returned
-    And the "Content-Type" header is "application/json"
+    And the "Content-Type" header value is "application/json"
 
   Scenario: Update a specific project Hours by ID
     Given the system knows about the database
     When a PUT request is made to /projects/:id/:hours 
     Then a response status code of 200 is returned
-    And the "Content-Type" header is "application/json"
+    And the "Content-Type" header value is "application/json"
 
   Scenario: Update a specific project Client by ID
     Given the system knows about the database
     When a PUT request is made to /projects/:id/:clients
     Then a response status code of 200 is returned
-    And the "Content-Type" header is "application/json"
+    And the "Content-Type" header value is "application/json"
 
   Scenario: Deny project status update request with invalid datatype
     Given the system knows about the database 
     When a PUT request is made to /projects/:id/:status
     Then a response status code of 400 is returned
-    And the "Content-Type" header is "application/json"
+    And the "Content-Type" header value is "application/json"
 
   Scenario: Deny project hours update request with invalid datatype
     Given the system knows about the database
     When a PUT request is made to /projects/:id/:hours
     Then a response status code of 400 is returned
-    And the "Content-Type" header is "application/json"
+    And the "Content-Type" header value is "application/json"
