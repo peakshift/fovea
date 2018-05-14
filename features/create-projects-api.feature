@@ -5,7 +5,7 @@ Feature: Create Projects API
         | ID    | name        | status | description        | hours | client   | 
 
   Scenario: Create a project
-    When a POST request is made to /projects with
+    When a "POST" request is made to "/projects" with the body
     """
       {
         "name": "Blossom",
@@ -21,7 +21,7 @@ Feature: Create Projects API
 
   @validation
   Scenario: Validate "name" property is sent in request body
-    When a "POST" request is made to ""/project"s" wi the bodyth
+    When a "POST" request is made to "/projects" with the body
     """
       {
         "status": 0,
@@ -120,7 +120,7 @@ Feature: Create Projects API
     """
 
   @validation
-  Scenario: Validate "client" property is sent in request body
+  Scenario: Validate all properties are sent in request body
     When a "POST" request is made to "/projects" with the body
     """
       {}
@@ -131,6 +131,50 @@ Feature: Create Projects API
     """
       {
         "msg": "Invalid request. Multiple properties are missing."
+      }
+    """
+
+    @validation
+  Scenario: Validate datatype for 'status' property
+    Given the system knows about the database 
+    When a "POST" request is made to "/projects/:id/:status" with the body
+     """
+      {
+        "name": "Blossom",
+        "status": "to-do",
+        "description": "blockchain project",
+        "hours": 90,
+        "client": "Blossom1"
+      }
+    """
+    Then the response status code is "400" 
+    And the "Content-Type" header value is "application/json"
+    And the response body is
+    """
+      {
+        "msg": "Invalid request. Incorrect data type."
+      }
+    """
+
+  @validation
+  Scenario: Validate datatype for 'hours' property
+    Given the system knows about the database
+    When a "POST" request is made to "/projects/:id/:hours" with the body
+     """
+      {
+        "name": "Blossom",
+        "status": 0,
+        "description": "blockchain project",
+        "hours": "90hrs",
+        "client": "Blossom1"
+      }
+    """
+    Then the response status code is "400" 
+    And the "Content-Type" header value is "application/json"
+    And the response body is
+    """
+      {
+        "msg": "Invalid request. Incorrect data type."
       }
     """
 

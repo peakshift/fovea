@@ -2,7 +2,7 @@ Feature: Projects Schema Validator
 
 
 Scenario: Valid if all fields filled in
-    When data missing name is passed to Validator
+    When a "POST" request is made to "/projects" with the body 
     """
       {
       	"name": "blossom",
@@ -15,7 +15,7 @@ Scenario: Valid if all fields filled in
     Then validation is successful
 
 Scenario: Invalid if missing Name field
-    When data missing name is passed to Validator
+    When a "POST" request is made to "/projects" with the body 
     """
       {
         "status": 0,
@@ -27,7 +27,7 @@ Scenario: Invalid if missing Name field
     Then an error is thrown
 
 Scenario: Invalid if missing Status field
-    When data missing name is passed to Validator
+    When a "POST" request is made to "/projects" with the body 
     """
       {
       	"name": "blossom",
@@ -39,7 +39,7 @@ Scenario: Invalid if missing Status field
     Then an error is thrown
 
 Scenario: Invalid if missing Description field
-    When data missing name is passed to Validator
+    When a "POST" request is made to "/projects" with the body 
     """
       {
       	"name": "blossom",
@@ -51,7 +51,7 @@ Scenario: Invalid if missing Description field
     Then an error is thrown
 
 Scenario: Invalid if missing Hours field
-    When data missing name is passed to Validator
+    When a "POST" request is made to "/projects" with the body 
     """
       {
       	"name": "blossom",
@@ -63,7 +63,7 @@ Scenario: Invalid if missing Hours field
     Then an error is thrown
 
 Scenario: Invalid if missing Client field
-    When data missing name is passed to Validator
+    When a "POST" request is made to "/projects" with the body 
     """
       {
       	"name": "blossom",
@@ -75,11 +75,11 @@ Scenario: Invalid if missing Client field
     Then an error is thrown
 
 Scenario: Invalid if incorrect datatype is used for Status field
-    When data missing name is passed to Validator
+    When a "POST" request is made to "/projects" with the body 
     """
       {
       	"name": "blossom",
-        "status": "0",
+        "status": "to-do",
         "description": "blockchain project",
         "hours": 90,
         "client": "Blossom1"
@@ -89,14 +89,21 @@ Scenario: Invalid if incorrect datatype is used for Status field
 
 
 Scenario: Invalid if incorrect datatype is used for Hours field 
-    When data missing name is passed to Validator
+    When a "POST" request is made to "/projects" with the body 
     """
       {
       	"name": "blossom",
         "status": 0,
         "description": "blockchain project",
-        "hours": "90",
+        "hours": "90hrs",
         "client": "Blossom1"
       }
+    """
+    Then an error is thrown
+
+Scenario: Invalid if missing multiple fields
+    When a "POST" request is made to "/projects" with the body 
+    """
+      {}
     """
     Then an error is thrown

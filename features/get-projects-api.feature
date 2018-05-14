@@ -8,8 +8,8 @@ Feature: Get Projects API
 
   Scenario: Get all projects
     Given the system knows about the database
-    When a GET request is made to /projects
-    Then a response status code of 200 is returned
+    When a "GET" request is made to "/projects"
+    Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
     And the response body is 
     """
@@ -27,8 +27,8 @@ Feature: Get Projects API
   
   Scenario: Get all projects with a specific status
     Given the system knows about the database
-    When a GET request is made to /projects/:status
-    Then a response status code of 200 is returned
+    When a "GET" request is made to "/projects/:status"
+    Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
     And the response body is
     """
@@ -46,8 +46,8 @@ Feature: Get Projects API
   
   Scenario: Get all projects from a specific client
     Given the system knows about the database
-    When a GET request is made to /projects/:client
-    Then a response status code of 200 is returned
+    When a "GET" request is made "to /projects/:client"
+    Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
     And the response body is
     """
@@ -65,8 +65,8 @@ Feature: Get Projects API
 
   Scenario: Get a specific project by ID
     Given the system knows about the database
-    When a GET request is made to /projects/:id
-    Then a response status code of 200 is returned
+    When a "GET" request is made to "/projects/:id"
+    Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
     And the response body is
     """
@@ -82,8 +82,8 @@ Feature: Get Projects API
   
   Scenario: Get a specific project Name by ID
     Given the system knows about the database
-    When a GET request is made to /projects/:id/:name
-    Then a response status code of 200 is returned
+    When a "GET" request is made to "/projects/:id/:name"
+    Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
     And the response body is
     """
@@ -94,8 +94,8 @@ Feature: Get Projects API
       
   Scenario: Get a specific project Status by ID
     Given the system knows about the database
-    When a GET request is made to /projects/:id/:status
-    Then a response status code of 200 is returned
+    When a "GET" request is made to "/projects/:id/:status"
+    Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
     And the response body is
     """
@@ -106,8 +106,8 @@ Feature: Get Projects API
  
   Scenario: Get a specific project Description by ID
     Given the system knows about the database
-    When a GET request is made to /projects/:id/:description
-    Then a response status code of 200 is returned
+    When a "GET" request is made to "/projects/:id/:description"
+    Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
     And the response body is
     """
@@ -118,8 +118,8 @@ Feature: Get Projects API
   
   Scenario: Get a specific project Hours by ID
     Given the system knows about the database
-    When a GET request is made to /projects/:id/:hours
-    Then a response status code of 200 is returned
+    When a "GET" request is made to "/projects/:id/:hours"
+    Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
     And the response body is
     """
@@ -130,8 +130,8 @@ Feature: Get Projects API
   
   Scenario: Get a specific project Client by ID
     Given the system knows about the database
-    When a GET request is made to /projects/:id/:client
-    Then a response status code of 200 is returned
+    When a "GET" request is made to "/projects/:id/:client"
+    Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
     And the response body is
     """
@@ -140,20 +140,41 @@ Feature: Get Projects API
       }
     """
 
-  Scenario: Deny request to get projects with an invalid ID
+  @validation
+  Scenario: Validate get request by 'ID'
     Given the system knows about the database
-    When a GET request is made to /projects/:id
-    Then a response status code of 400 is returned 
+    When a "GET" request is made to "/projects/:id"
+    Then the response status code is "400"  
     And the "Content-Type" header value is "application/json"
+    And the response body is
+    """
+      {
+        "msg": "Invalid request. 'id' not found."
+      }
+    """
 
-  Scenario: Deny request to get projects with an invalid Client ID
+  @validation
+  Scenario: Validate get request by 'client'
     Given the system knows about the database
-    When a GET request is made to /projects/:client
-    Then a response status code of 400 is returned 
+    When a "GET" request is made to "/projects/:client"
+    Then the response status code is "400"  
     And the "Content-Type" header value is "application/json"
+    And the response body is
+    """
+      {
+        "msg": "Invalid request. 'client' not found."
+      }
+    """
 
-  Scenario: Deny request to get projects with an invalid Status code
+  @validation
+  Scenario: Validate get request by 'status'
     Given the system knows about the database
-    When a GET request is made to /projects/:status
-    Then a response status code of 400 is returned 
+    When a "GET" request is made to "/projects/:status"
+    Then the response status code is "400"  
     And the "Content-Type" header value is "application/json"
+    And the response body is
+    """
+      {
+        "msg": "Invalid request. 'status' not found."
+      }
+    """
