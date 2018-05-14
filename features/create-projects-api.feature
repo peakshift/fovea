@@ -1,9 +1,9 @@
 Feature: Create Projects API
 
   Background:
-    Given the database contains the following
+    Given the database contains
         | ID    | name        | status | description        | hours | client   | 
-  
+
   Scenario: Create a project
     When a POST request is made to /projects with
     """
@@ -15,11 +15,12 @@ Feature: Create Projects API
         "client": "Blossom1"
       }
     """
-    Then a response status code of 201 is returned
+    Then the response status code is "201"
     And the "Content-Type" header value is "application/json"
 
-  Scenario: Deny request to create a project with a missing Name field
-    When a POST request is made to /projects with
+
+  Scenario: Validate "name" property is sent in request body
+    When a "POST" request is made to ""/project"s" wi the bodyth
     """
       {
         "status": 0,
@@ -28,11 +29,17 @@ Feature: Create Projects API
         "client": "Blossom1"
       }
     """
-    Then a response status code of 400 is returned
-    And the "Content-Type" header value is "application/json"
+    Then the response status code is "400"
+    And the "Content-Type" header is "application/json"
+    And the response body is
+    """
+      {
+        "msg": "Invalid request. 'name' property is missing."
+      }
+    """
 
-  Scenario: Deny request to create a project with a missing Status field
-    When a POST request is made to /projects with
+  Scenario: Validate "status" property is sent in request body
+    When a "POST" request is made to "/projects" with the body
     """
       {
         "name": "Blossom",
@@ -41,11 +48,17 @@ Feature: Create Projects API
         "client": "Blossom1"
       }
     """
-    Then a response status code of 400 is returned
-    And the "Content-Type" header value is "application/json"
+    Then the response status code is "400"
+    And the "Content-Type" header is "application/json"
+    And the response body is
+    """
+      {
+        "msg": "Invalid request. 'status' property is missing."
+      }
+    """
 
-  Scenario: Deny request to create a project with a missing Description field
-    When a POST request is made to /projects with
+  Scenario: Validate "description" property is sent in request body
+    When a "POST" request is made to "/projects" with the body
     """
       {
         "name": "Blossom",
@@ -54,11 +67,17 @@ Feature: Create Projects API
         "client": "Blossom1"
       }
     """
-    Then a response status code of 400 is returned
-    And the "Content-Type" header value is "application/json"
+    Then the response status code is "400"
+    And the "Content-Type" header is "application/json"
+    And the response body is
+    """
+      {
+        "msg": "Invalid request. 'description' property is missing."
+      }
+    """
 
-  Scenario: Deny request to create a project with a missing Hours field
-    When a POST request is made to /projects with
+  Scenario: Validate "hours" property is sent in request body
+    When a "POST" request is made to "/projects" with the body
     """
       {
         "name": "Blossom",
@@ -67,11 +86,17 @@ Feature: Create Projects API
         "client": "Blossom1"
       }
     """
-    Then a response status code of 400 is returned
-    And the "Content-Type" header value is "application/json"
+    Then the response status code is "400"
+    And the "Content-Type" header is "application/json"
+    And the response body is
+    """
+      {
+        "msg": "Invalid request. 'hours' property is missing."
+      }
+    """
 
-  Scenario: Deny request to create a project with a missing Client field
-    When a POST request is made to /projects with
+  Scenario: Validate "client" property is sent in request body
+    When a "POST" request is made to "/projects" with the body
     """
       {
         "name": "Blossom",
@@ -80,15 +105,26 @@ Feature: Create Projects API
         "hours": 90,
       }
     """
-    Then a response status code of 400 is returned
-    And the "Content-Type" header value is "application/json" 
+    Then the response status code is "400"
+    And the "Content-Type" header is "application/json"
+    And the response body is
+    """
+      {
+        "msg": "Invalid request. 'client' property is missing."
+      }
+    """
 
-  Scenario: Deny request to create a project with no fields
-    When a POST request is made to /projects with
+  Scenario: Validate "client" property is sent in request body
+    When a "POST" request is made to "/projects" with the body
     """
       {}
     """
-    Then a response status code of 400 is returned
-    And the "Content-Type" header value is "application/json"
+    Then the response status code is "400"
+    And the "Content-Type" header is "application/json"
+    And the response body is
+    """
+      {
+        "msg": "Invalid request. Multiple properties are missing."
+      }
+    """
 
-  
