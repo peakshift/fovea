@@ -19,6 +19,7 @@ Feature: Create Projects API
     And the "Content-Type" header value is "application/json"
 
 
+  @validation
   Scenario: Validate "name" property is sent in request body
     When a "POST" request is made to ""/project"s" wi the bodyth
     """
@@ -38,6 +39,7 @@ Feature: Create Projects API
       }
     """
 
+  @validation
   Scenario: Validate "status" property is sent in request body
     When a "POST" request is made to "/projects" with the body
     """
@@ -57,6 +59,7 @@ Feature: Create Projects API
       }
     """
 
+  @validation
   Scenario: Validate "description" property is sent in request body
     When a "POST" request is made to "/projects" with the body
     """
@@ -76,6 +79,7 @@ Feature: Create Projects API
       }
     """
 
+  @validation
   Scenario: Validate "hours" property is sent in request body
     When a "POST" request is made to "/projects" with the body
     """
@@ -95,6 +99,7 @@ Feature: Create Projects API
       }
     """
 
+  @validation
   Scenario: Validate "client" property is sent in request body
     When a "POST" request is made to "/projects" with the body
     """
@@ -114,6 +119,7 @@ Feature: Create Projects API
       }
     """
 
+  @validation
   Scenario: Validate "client" property is sent in request body
     When a "POST" request is made to "/projects" with the body
     """
