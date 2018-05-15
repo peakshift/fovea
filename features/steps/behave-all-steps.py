@@ -3,6 +3,30 @@ import json
 import requests
 
 
+
+url = "http://localhost:3000"
+
+@when('a "GET" request is made to "{resource}"')
+def step_impl(context, resource):
+    context.response = requests.get(url + resource)
+    
+
+@then('the response status code is "{code}"')
+def step_impl(context, code):
+    assert int(code) == int(context.response.status_code)
+
+@then('the "{header}" header value is "{value}"')
+def step_impl(context, header, value):
+    print context.response.headers[header]
+
+
+@then('the response body is')
+def step_impl(context):
+    assert context.response.text == context.text
+    #context.assertContains(context.response.text, context.text)
+
+ 
+'''
 @given(u'the database contains')
 def step_impl(context):
 	
@@ -80,7 +104,7 @@ def step_impl(context, header, value):
 def step_impl(context):
 	print r.json()
 	
-
+'''
 
 
 
