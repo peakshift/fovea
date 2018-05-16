@@ -4,56 +4,25 @@ import requests
 
 
 
-@when('a "GET" request is made to "{resource}"')
-def step_impl(context, resource):
-    context.response = requests.get(url + resource)
-
-    
-
-@then('the response status code is "{code}"')
-def step_impl(context, code):
-    assert int(code) == int(context.response.status_code)
-
-@then('the "{header}" header value is "{value}"')
-def step_impl(context, header, value):
-    print context.response.headers[header]
-
-
-@then('the response body is')
-def step_impl(context):
-    print type(context.text) #behave.model.Text
-    print type(context.response.text) #unicode
-
-    print type(json.loads(context.text)) #dict
-    print type(json.loads(context.response.text)) #dict
-
-    sc_dict = json.loads(context.text)
-    rs_dict = json.loads(context.response.text)
-
-    print sc_dict['name'] #Blossom
-    print rs_dict['name'] #Blossom
-
-    assert  sc_dict == rs_dict
-
-
- 
-'''
 @given(u'the database contains')
 def step_impl(context):
+    #instance of database
 	
-
 
 @given(u'I have authorisation')
 def step_impl(context):
+    #logged in as admin
 	
 
 @given(u'the system knows about the database')
 def step_impl(context);
+    #connection has started and is accessible
 
 
-@when(u'a POST request is made to "{resource}" with the body')
+@when(u'a "POST" request is made to "{resource}"')
 def step_impl(context, resource):
-	context.response = requests.post("" + resource)
+    data = context.text
+    context.response = requests.post("" + resource, data)
 	
 
 
@@ -63,19 +32,19 @@ def step_impl(context, code):
 
 
 
-@when(u'a GET request is made to "{resource}"')
+@when(u'a "GET" request is made to "{resource}"')
 def step_impl(context, resource):
 	context.response = requests.get("" + resource)
 
 	
 
-@when(u'a PUT request is made to "{resource}" with the body')
+@when(u'a "PUT" request is made to "{resource}" with the body')
 def step_impl(context, resource):
 	context.response = requests.put("" + resource)
 		
 
 
-@when(u'a DELETE request is made to "{resource}"')
+@when(u'a "DELETE" request is made to "{resource}"')
 def step_impl(context, resource):
 	context.response = requests.delete("" + resource)
 	
@@ -89,9 +58,13 @@ def step_impl(context, header, value):
 
 @then(u'the response body is')
 def step_impl(context):
-	print context.response.text.json()
+    sc_dict = json.loads(context.text)
+    rs_dict = json.loads(context.response.text)
+
+    assert  sc_dict == rs_dict
+
 	
-'''
+
 
 
 
