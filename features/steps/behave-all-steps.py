@@ -4,11 +4,10 @@ import requests
 
 
 
-url = "http://localhost:3000"
-
 @when('a "GET" request is made to "{resource}"')
 def step_impl(context, resource):
     context.response = requests.get(url + resource)
+
     
 
 @then('the response status code is "{code}"')
@@ -22,8 +21,20 @@ def step_impl(context, header, value):
 
 @then('the response body is')
 def step_impl(context):
-    assert context.response.text == context.text
-    #context.assertContains(context.response.text, context.text)
+    print type(context.text) #behave.model.Text
+    print type(context.response.text) #unicode
+
+    print type(json.loads(context.text)) #dict
+    print type(json.loads(context.response.text)) #dict
+
+    sc_dict = json.loads(context.text)
+    rs_dict = json.loads(context.response.text)
+
+    print sc_dict['name'] #Blossom
+    print rs_dict['name'] #Blossom
+
+    assert  sc_dict == rs_dict
+
 
  
 '''
