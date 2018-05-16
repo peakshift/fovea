@@ -4,6 +4,7 @@ Feature: Get Projects API
     Given the database contains the following
       | ID    | name        | status | description        | hours | client   | 
       | blsm  | Blossom     | 0      | blockchain project | 90    | Blossom1 | 
+      | zed   | ZipZap      | 0      | blockchain project | 120   | ZED      | 
 
 
   Scenario: Get all projects
@@ -13,16 +14,26 @@ Feature: Get Projects API
     And the "Content-Type" header value is "application/json"
     And the response body is 
     """
-      [
-        { 
-          "ID": "blsm", 
-          "name": "Blossom",
-          "status": 0,
-          "description": "blockchain project",
-          "hours": 90,
-          "client": "Blossom1"
-        }
-      ]
+      {
+        "data":[
+          {
+           "client": "Blossom1",
+            "ID": "blsm",
+            "name": "Blossom",
+            "status": 0,
+            "description": "blockchain project",
+            "hours": 90
+          },       
+          {
+            "ID": "zed",
+            "name": "ZipZap",
+            "status": 0,
+            "description": "blockchain project",
+            "hours": 120,
+            "client": "ZED"
+          }
+        ]
+      }
     """
   
   Scenario: Get all projects with a specific status
@@ -32,16 +43,26 @@ Feature: Get Projects API
     And the "Content-Type" header value is "application/json"
     And the response body is
     """
-      [
-        {
-          "ID": "blsm",
-          "name": "Blossom",
-          "status": 0,
-          "description": "blockchain project",
-          "hours": 90,
-          "client": "Blossom1"
-        }
-      ]
+      {
+        "data":[
+          {
+           "client": "Blossom1",
+            "ID": "blsm",
+            "name": "Blossom",
+            "status": 0,
+            "description": "blockchain project",
+            "hours": 90
+          },       
+          {
+            "ID": "zed",
+            "name": "ZipZap",
+            "status": 0,
+            "description": "blockchain project",
+            "hours": 120,
+            "client": "ZED"
+          }
+        ]
+      }
     """
   
   Scenario: Get all projects from a specific client
@@ -51,16 +72,18 @@ Feature: Get Projects API
     And the "Content-Type" header value is "application/json"
     And the response body is
     """
-      [
-        {
-          "ID": "blsm",
-          "name": "Blossom",
-          "status": 0,
-          "description": "blockchain project",
-          "hours" : 90,
-          "client": "Blossom1"
-        }
-      ]
+      {
+        "data":[
+          {
+           "client": "Blossom1",
+            "ID": "blsm",
+            "name": "Blossom",
+            "status": 0,
+            "description": "blockchain project",
+            "hours": 90
+          }
+        ]
+      }
     """
 
   Scenario: Get a specific project by ID
@@ -70,13 +93,16 @@ Feature: Get Projects API
     And the "Content-Type" header value is "application/json"
     And the response body is
     """
-      { 
-        "ID": "blsm",
-        "name": "Blossom",
-        "status": 0,
-        "description": "blockchain project",
-        "hours": 90,
-        "client": "Blossom1"
+      {
+        "data":
+          {
+           "client": "Blossom1",
+            "ID": "blsm",
+            "name": "Blossom",
+            "status": 0,
+            "description": "blockchain project",
+            "hours": 90
+          }
       }
     """
   
@@ -88,7 +114,10 @@ Feature: Get Projects API
     And the response body is
     """
       {
-        "name": "Blossom"
+        "data":
+          {
+            "name": "Blossom"
+          }
       }
     """
       
@@ -100,7 +129,10 @@ Feature: Get Projects API
     And the response body is
     """
       {
-        "status": 0
+        "data":
+          {
+            "status": 0
+          }
       }
     """
  
@@ -112,7 +144,10 @@ Feature: Get Projects API
     And the response body is
     """
       {
-        "description": "blockchain project"
+        "data":
+          {
+            "description": "blockchain project"
+          }
       }
     """
   
@@ -124,7 +159,10 @@ Feature: Get Projects API
     And the response body is
     """
       {
-        "hours": 90
+        "data":
+          {
+            "hours": 90
+          }
       }
     """
   
@@ -136,7 +174,10 @@ Feature: Get Projects API
     And the response body is
     """
       {
-        "client": "Blossom1"
+        "data":
+          {
+           "client": "Blossom1"
+          }
       }
     """
 

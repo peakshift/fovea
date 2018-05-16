@@ -2,7 +2,7 @@ Feature: Projects Schema Validator
 
 
 Scenario: Valid if all fields filled in
-  When a data is passed to Validator 
+  When data is passed to Validator 
   """
     {
     	"name": "blossom",
@@ -12,10 +12,10 @@ Scenario: Valid if all fields filled in
       "client": "Blossom1"
     }
   """
-  Then validation is successful
+  Then validation passes
 
 Scenario: Invalid if missing Name field
-  When data missing name is passed to Validator    
+  When data missing 'name' is passed to Validator    
   """
     {
       "status": 0,
@@ -24,10 +24,10 @@ Scenario: Invalid if missing Name field
       "client": "Blossom1"
     }
   """
-  Then an error is thrown
+  Then validation fails
 
 Scenario: Invalid if missing Status field
-  When data missing status is passed to Validator    
+  When data missing 'status' is passed to Validator    
   """
     {
     	"name": "blossom",
@@ -36,10 +36,10 @@ Scenario: Invalid if missing Status field
       "client": "Blossom1"
     }
   """
-  Then an error is thrown
+  Then validation fails
 
 Scenario: Invalid if missing Description field
-  When data missing description is passed to Validator    
+  When data missing 'description' is passed to Validator    
   """
     {
     	"name": "blossom",
@@ -48,10 +48,10 @@ Scenario: Invalid if missing Description field
       "client": "Blossom1"
     }
   """
-  Then an error is thrown
+  Then validation fails
 
 Scenario: Invalid if missing Hours field
-  When data missing hours is passed to Validator
+  When data missing 'hours' is passed to Validator
   """
     {
     	"name": "blossom",
@@ -60,10 +60,10 @@ Scenario: Invalid if missing Hours field
       "client": "Blossom1"
     }
   """
-  Then an error is thrown
+  Then validation fails
 
 Scenario: Invalid if missing Client field
-  When data missing client is passed to Validator    
+  When data missing 'client' is passed to Validator    
   """
     {
     	"name": "blossom",
@@ -72,10 +72,10 @@ Scenario: Invalid if missing Client field
       "hours": 90,
     }
   """
-  Then an error is thrown
+  Then validation fails
 
 Scenario: Invalid if incorrect datatype is used for Status field
-  When an invalid datatype for status is passed to Validator
+  When an invalid datatype for 'status' is passed to Validator
   """
     {
     	"name": "blossom",
@@ -85,11 +85,11 @@ Scenario: Invalid if incorrect datatype is used for Status field
       "client": "Blossom1"
     }
   """
-  Then an error is thrown
+  Then validation fails
 
 
 Scenario: Invalid if incorrect datatype is used for Hours field 
-  When an invalid datatype for hours is passed to Validator 
+  When an invalid datatype for 'hours' is passed to Validator 
   """
     {
     	"name": "blossom",
@@ -99,11 +99,11 @@ Scenario: Invalid if incorrect datatype is used for Hours field
       "client": "Blossom1"
     }
   """
-  Then an error is thrown
+  Then validation fails
 
 Scenario: Invalid if missing multiple fields
   When no data is passed to Validator 
   """
     {}
   """
-  Then an error is thrown
+  Then validation fails

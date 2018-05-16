@@ -4,6 +4,7 @@ Feature: Update Projects API
     Given the database contains the following
       | ID    | name        | status | description        | hours | client   | 
       | blsm  | Blossom     | 0      | blockchain project | 90    | Blossom1 | 
+      | zed   | ZipZap      | 0      | blockchain project | 120   | ZED      | 
 
 
 	Scenario: Update multiple properties of a specific project by ID
@@ -17,6 +18,12 @@ Feature: Update Projects API
     """
     Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
+    And the response body is
+    """
+      {
+        "msg": "Update successful."
+      }
+    """
 
   Scenario: Update a specific project 'name' by ID
     Given the system knows about the database
@@ -28,6 +35,12 @@ Feature: Update Projects API
     """
     Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
+    And the response body is
+    """
+      {
+        "msg": "Update successful."
+      }
+    """
 
   Scenario: Update a specific project 'status' by ID
     Given the system knows about the database
@@ -39,6 +52,12 @@ Feature: Update Projects API
     """
     Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
+    And the response body is
+    """
+      {
+        "msg": "Update successful."
+      }
+    """
 
   Scenario: Update a specific project 'description' by ID
     Given the system knows about the database
@@ -50,6 +69,12 @@ Feature: Update Projects API
     """
     Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
+    And the response body is
+    """
+      {
+        "msg": "Update successful."
+      }
+    """
 
   Scenario: Update a specific project 'hours' by ID
     Given the system knows about the database
@@ -61,6 +86,13 @@ Feature: Update Projects API
     """
     Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
+    And the response body is
+    """
+      {
+        "msg": "Update successful."
+      }
+    """
+
 
   Scenario: Update a specific project 'client' by ID
     Given the system knows about the database
@@ -72,6 +104,12 @@ Feature: Update Projects API
     """
     Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
+    And the response body is
+    """
+      {
+        "msg": "Update successful."
+      }
+    """
 
   @validation
   Scenario: Validate 'status' update request datatype

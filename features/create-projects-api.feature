@@ -2,8 +2,10 @@ Feature: Create Projects API
 
   Background:
     Given the database contains
-        | ID    | name        | status | description        | hours | client   | 
+      | ID    | name        | status | description        | hours | client   | 
+      | zed   | ZipZap      | 0      | blockchain project | 120   | ZED      | 
 
+  
   Scenario: Create a project
     When a "POST" request is made to "/projects" with the body
     """
@@ -17,6 +19,20 @@ Feature: Create Projects API
     """
     Then the response status code is "201"
     And the "Content-Type" header value is "application/json"
+    And the response body is
+    """
+      {
+        "data": {
+          "id": "blsm",
+          "name": "Blossom",
+          "status": 0,
+          "description": "blockchain project",
+          "hours": 90,
+          "client": "Blossom1"
+        },
+        "msg": "Project created."
+      }
+    """
 
 
   @validation

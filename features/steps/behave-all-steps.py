@@ -53,67 +53,43 @@ def step_impl(context);
 
 @when(u'a POST request is made to "{resource}" with the body')
 def step_impl(context, resource):
-	r = requests.post("")
+	context.response = requests.post("" + resource)
 	
 
 
 @then(u'the response status code is "{code}" is')
 def step_impl(context, code):
-	print r.status_code
-	
+    assert int(code) == int(context.response.status_code)
+
 
 
 @when(u'a GET request is made to "{resource}"')
 def step_impl(context, resource):
-	r = requests.get("")
+	context.response = requests.get("" + resource)
 
 	
 
 @when(u'a PUT request is made to "{resource}" with the body')
 def step_impl(context, resource):
-	r = requests.put("")
-	
+	context.response = requests.put("" + resource)
+		
 
 
-@when(u'a GET request is made to "{resource}"/"{endpoint}"')
-def step_impl(context, resource, endpoint):
-	r = requests.get("")
-	
-
-
-@when(u'a PUT request is made to "{resource}"/"{endpoint}" with the body')
-def step_impl(context, resource, endpoint):
-	r = requests.put("")
-	
-
-
-@when(u'a DELETE request is made to "{resource}"/"{endpoint}"')
-def step_impl(context, resource, endpoint):
-	r = requests.delete("")
-	
-
-
-@when(u'a GET request is made to "{resource}"/"{id}"/"{endpoint}"')
-def step_impl(context, resource, id, endpoint):
-	r = requests.gett("")
-	
-
-
-@when(u'a PUT request is made to "{resource}"/"{id}"/"{endpoint}" with the body')
-def step_impl(context, resource, id, endpoint):
-	r = requests.put("")
+@when(u'a DELETE request is made to "{resource}"')
+def step_impl(context, resource):
+	context.response = requests.delete("" + resource)
 	
 
 
 @then(u'the "{header}" header value is "{value}"')
 def step_impl(context, header, value):
-	r.headers.get({'header': 'value'})
+    print context.response.headers[header]
 
 	
 
 @then(u'the response body is')
 def step_impl(context):
-	print r.json()
+	print context.response.text.json()
 	
 '''
 
