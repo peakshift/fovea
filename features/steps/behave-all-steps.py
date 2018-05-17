@@ -19,10 +19,10 @@ def step_impl(context);
     #connection has started and is accessible
 
 
-@when(u'a "POST" request is made to "{resource}"')
+@when(u'a "POST" request is made to "{resource}" with the body')
 def step_impl(context, resource):
-    data = context.text
-    context.response = requests.post("" + resource, data)
+    post_data = context.text
+    context.response = requests.post("" + resource, data = post_data)
 	
 
 
@@ -40,7 +40,8 @@ def step_impl(context, resource):
 
 @when(u'a "PUT" request is made to "{resource}" with the body')
 def step_impl(context, resource):
-	context.response = requests.put("" + resource)
+	put_data = context.text
+    context.response = requests.put("" + resource, data = put_data)
 		
 
 
