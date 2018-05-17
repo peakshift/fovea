@@ -23,12 +23,7 @@ Feature: Create Projects API
     """
       {
         "data": {
-          "id": "blsm",
-          "name": "Blossom",
-          "status": 0,
-          "description": "blockchain project",
-          "hours": 90,
-          "client": "Blossom1"
+          "id": "blsm"
         },
         "msg": "Project created."
       }
