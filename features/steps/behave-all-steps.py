@@ -65,7 +65,7 @@ def step_impl(context):
 
     assert  sc_dict == rs_dict
 
-	
+
 
 
 
