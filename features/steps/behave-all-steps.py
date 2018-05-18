@@ -4,6 +4,40 @@ import requests
 from jsonschema import validate
 
 
+class Validate:
+    def __init__(self, data):
+        self.schema = {
+            "id": "/projects",
+            "title": "Projects",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "status": {
+                    "enum": [ 0, 1, 2 ] 
+
+                },
+                "description": {
+                    "type": "string"
+                },
+                "hours": {
+                    "type": "number"
+                },
+                "client": {
+                    "type": "string"
+                }
+            },
+            "required": ["name", "status", "hours", "description", "client"]
+        }
+
+        try:
+            validate(data, self.schema)
+            return True
+        except:
+            return False
+
+            
 
 @given(u'the database contains')
 def step_impl(context):
@@ -66,6 +100,39 @@ def step_impl(context):
     assert  sc_dict == rs_dict
 
 
+
+@given(u'the schema exists')
+def step_impl(context):
+    context.schema = context.text
+
+
+@when(u'data is passed to Validator')
+def step_impl(context):
+    data = json.loads(context.text)
+    assert(Validate(data) == True)
+
+
+@when(u'data with a missing field is passed to Validator')
+def step_impl(context):
+    data = json.loads(context.text)
+    assert(Validate(data) == False)
+
+@when(u'a field with an invalid datatype is passed to Validator')
+def step_impl(context):
+    data = json.loads(context.text)
+    assert(Validate(data) == False)
+
+
+@when(u'no data is passed to Validator')
+def step_impl(context):
+    data = json.loads(context.text)
+    assert(Validate(data) == False)
+
+
+@then(u'validation "{results}"')
+def step_impl(context, results):
+    if results not in context:
+        fail('%r not in %r' % (results, context))
 
 
 
