@@ -1,35 +1,6 @@
 Feature: Projects Schema Validator
 
 
-Background:
-  Given the schema exists
-  """
-    {
-      "id": "/projects",
-      "title": "Projects",
-      "type": "object",
-      "properties": {
-          "name": {
-              "type": "string"
-          },
-          "status": {
-              "enum": [ 0, 1, 2 ] 
-
-          },
-          "description": {
-              "type": "string"
-          },
-          "hours": {
-              "type": "number"
-          },
-          "client": {
-              "type": "string"
-          }
-      },
-      "required": ["name", "status", "hours", "description", "client"]
-    }
-  """
-
 
   Scenario: Valid if all fields are filled in
     When data is passed to Validator 
