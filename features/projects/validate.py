@@ -3,7 +3,7 @@ from jsonschema import validate
 
 
 class Validate:
-	def __init__(self, data):
+	def __init__(self):
 		self.schema = {
 		    "id": "/projects",
 		    "title": "Projects",
