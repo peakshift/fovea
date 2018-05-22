@@ -29,12 +29,14 @@ class Validate:
 		    "required": ["name", "status", "hours", "description", "client"]
 		}
 
-'''
+
+	def check(self, data):
 		try:
-			assert validate(data, self.schema)
+			"""Is valid if None is returned"""
+			validate(data, self.schema)
 			return True
 		except:
 			return False
-'''			
+		
 
  
