@@ -148,7 +148,7 @@ Feature: Create Projects API
     @validation
   Scenario: Validate datatype for 'status' property
     Given the system knows about the database 
-    When a "POST" request is made to "/projects/:id/:status" with the body
+    When a "POST" request is made to "/projects" with the body
      """
       {
         "name": "Blossom",
@@ -170,7 +170,7 @@ Feature: Create Projects API
   @validation
   Scenario: Validate datatype for 'hours' property
     Given the system knows about the database
-    When a "POST" request is made to "/projects/:id/:hours" with the body
+    When a "POST" request is made to "/projects" with the body
      """
       {
         "name": "Blossom",

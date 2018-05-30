@@ -6,16 +6,17 @@ from projects import validate
 validate = validate.Validate()
 url = "http://localhost:3000"
 
-'''
+
 @given(u'the database contains')
 def step_impl(context):
 	#instance of database
-	
-@given(u'I have authorisation')
+	pass
+
+@given(u'the system knows about the database')
 def step_impl(context):
-	#logged in as admin
-	
-'''
+	pass
+		
+
 @when(u'a "GET" request is made to "{resource}"')
 def step_impl(context, resource):
 	context.response = requests.get(url + resource)

@@ -38,7 +38,7 @@ Feature: Get Projects API
   
   Scenario: Get all projects with a specific status
     Given the system knows about the database
-    When a "GET" request is made to "/projects/:status"
+    When a "GET" request is made to "/projects/0"
     Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
     And the response body is
@@ -67,7 +67,7 @@ Feature: Get Projects API
   
   Scenario: Get all projects from a specific client
     Given the system knows about the database
-    When a "GET" request is made "to /projects/:client"
+    When a "GET" request is made "to /projects/Blossom1"
     Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
     And the response body is
@@ -88,7 +88,7 @@ Feature: Get Projects API
 
   Scenario: Get a specific project by ID
     Given the system knows about the database
-    When a "GET" request is made to "/projects/:id"
+    When a "GET" request is made to "/projects/123"
     Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
     And the response body is
@@ -108,7 +108,7 @@ Feature: Get Projects API
   
   Scenario: Get a specific project Name by ID
     Given the system knows about the database
-    When a "GET" request is made to "/projects/:id/:name"
+    When a "GET" request is made to "/projects/123/name"
     Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
     And the response body is
@@ -123,7 +123,7 @@ Feature: Get Projects API
       
   Scenario: Get a specific project Status by ID
     Given the system knows about the database
-    When a "GET" request is made to "/projects/:id/:status"
+    When a "GET" request is made to "/projects/123/status"
     Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
     And the response body is
@@ -138,7 +138,7 @@ Feature: Get Projects API
  
   Scenario: Get a specific project Description by ID
     Given the system knows about the database
-    When a "GET" request is made to "/projects/:id/:description"
+    When a "GET" request is made to "/projects/123/description"
     Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
     And the response body is
@@ -153,7 +153,7 @@ Feature: Get Projects API
   
   Scenario: Get a specific project Hours by ID
     Given the system knows about the database
-    When a "GET" request is made to "/projects/:id/:hours"
+    When a "GET" request is made to "/projects/123/hours"
     Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
     And the response body is
@@ -168,7 +168,7 @@ Feature: Get Projects API
   
   Scenario: Get a specific project Client by ID
     Given the system knows about the database
-    When a "GET" request is made to "/projects/:id/:client"
+    When a "GET" request is made to "/projects/123/client"
     Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
     And the response body is
@@ -184,7 +184,7 @@ Feature: Get Projects API
   @validation
   Scenario: Validate get request by 'ID'
     Given the system knows about the database
-    When a "GET" request is made to "/projects/:id"
+    When a "GET" request is made to "/projects/120"
     Then the response status code is "400"  
     And the "Content-Type" header value is "application/json"
     And the response body is
@@ -197,7 +197,7 @@ Feature: Get Projects API
   @validation
   Scenario: Validate get request by 'client'
     Given the system knows about the database
-    When a "GET" request is made to "/projects/:client"
+    When a "GET" request is made to "/projects?filters[client]=fovea"
     Then the response status code is "400"  
     And the "Content-Type" header value is "application/json"
     And the response body is
@@ -210,7 +210,7 @@ Feature: Get Projects API
   @validation
   Scenario: Validate get request by 'status'
     Given the system knows about the database
-    When a "GET" request is made to "/projects/:status"
+    When a "GET" request is made to "/projects?filters[status]=3"
     Then the response status code is "400"  
     And the "Content-Type" header value is "application/json"
     And the response body is
