@@ -7,7 +7,7 @@ Only authorised persons can perform such actions
       | blsm  | Blossom     | 0      | blockchain project | 90    | Blossom1 |
       | zed   | ZipZap      | 0      | blockchain project | 120   | ZED      | 
 
-
+  @api
   Scenario: Delete a specific project by ID
     When a "DELETE" request is made to "/projects/100"
     Then the response status code is "200" 
@@ -20,7 +20,7 @@ Only authorised persons can perform such actions
     """
   
 
-  @validation
+  @validation @api
   Scenario: Validate delete request ID
     When a "DELETE" request is made to "/projects/101"
     Then the response status code is "400" 

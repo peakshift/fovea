@@ -7,6 +7,7 @@ Feature: Update Projects API
       | zed   | ZipZap      | 0      | blockchain project | 120   | ZED      | 
 
 
+  @api
 	Scenario: Update multiple properties of a specific project by ID
     Given the system knows about the database
     When a "PUT" request is made to "/projects/200" with the body
@@ -25,6 +26,7 @@ Feature: Update Projects API
       }
     """
 
+  @api
   Scenario: Update a specific project 'name' by ID
     Given the system knows about the database
     When a "PUT" request is made to "/projects/200/name" with the body
@@ -42,6 +44,7 @@ Feature: Update Projects API
       }
     """
 
+  @api
   Scenario: Update a specific project 'status' by ID
     Given the system knows about the database
     When a "PUT" request is made to "/projects/200/status" with the body
@@ -59,6 +62,7 @@ Feature: Update Projects API
       }
     """
 
+  @api
   Scenario: Update a specific project 'description' by ID
     Given the system knows about the database
     When a "PUT" request is made to "/projects/200/description" with the body
@@ -76,6 +80,7 @@ Feature: Update Projects API
       }
     """
 
+  @api
   Scenario: Update a specific project 'hours' by ID
     Given the system knows about the database
     When a "PUT" request is made to "/projects/200/hours"  with the body
@@ -93,7 +98,7 @@ Feature: Update Projects API
       }
     """
 
-
+  @api
   Scenario: Update a specific project 'client' by ID
     Given the system knows about the database
     When a "PUT" request is made to "/projects/200/clients" with the body
@@ -111,7 +116,7 @@ Feature: Update Projects API
       }
     """
 
-  @validation
+  @validation @api
   Scenario: Validate 'status' update request datatype
     Given the system knows about the database 
     When a "PUT" request is made to "/projects/200/status" with the body
@@ -129,7 +134,7 @@ Feature: Update Projects API
       }
     """
 
-  @validation
+  @validation @api
   Scenario: Validate 'hours' update request datatype
     Given the system knows about the database
     When a "PUT" request is made to "/projects/200/hours" with the body
