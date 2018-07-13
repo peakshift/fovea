@@ -1,7 +1,7 @@
 from behave import * 
 import json
 import requests
-from projects import validate
+from common import validate
 
 validate = validate.Validate()
 url = "http://localhost:3000"
@@ -44,7 +44,7 @@ def step_impl(context, code):
 
 @then(u'the "{header}" header value is "{value}"')
 def step_impl(context, header, value):
-	print context.response.headers[header]
+	print (context.response.headers[header])
 
 
 @then(u'the response body is')
@@ -80,4 +80,4 @@ def step_impl(context):
 
 @then(u'validation "{results}"')
 def step_impl(context, results):
-	print "Validation %r" % results
+	print ("Validation %r" % results)

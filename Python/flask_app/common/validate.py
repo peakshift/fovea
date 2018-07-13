@@ -1,7 +1,6 @@
 from jsonschema import validate
 
 
-
 class Validate:
 	def __init__(self):
 		self.schema = {

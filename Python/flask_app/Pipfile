@@ -1,0 +1,9 @@
+[requires]
+python_version = "3.6"
+
+[packages]
+behave = "*"
+Flask = "*"
+Flask-RESTful = "*"
+requests = "*" 
+jsonschema = "*"
