@@ -1,4 +1,4 @@
-from handlers import app
+from handlers.views import app
 import flask
 
 app.run(debug=True,
