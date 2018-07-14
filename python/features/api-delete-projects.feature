@@ -1,13 +1,14 @@
 Feature: Delete Projects API
 Only authorised persons can perform such actions
 
-  Background: 
-    Given the database contains
-      | ID    | name        | status | description        | hours | client   | 
-      | blsm  | Blossom     | 0      | blockchain project | 90    | Blossom1 |
-      | zed   | ZipZap      | 0      | blockchain project | 120   | ZED      | 
+  
+  # Background: 
+  #   Given the database contains
+  #     | ID    | name        | status | description        | hours | client   | 
+  #     | blsm  | Blossom     | 0      | blockchain project | 90    | Blossom1 |
+  #     | zed   | ZipZap      | 0      | blockchain project | 120   | ZED      | 
 
-  @api
+  @wip @api
   Scenario: Delete a specific project by ID
     When a "DELETE" request is made to "/projects/100"
     Then the response status code is "200" 
@@ -20,7 +21,7 @@ Only authorised persons can perform such actions
     """
   
 
-  @validation @api
+  @wip @validation @api
   Scenario: Validate delete request ID
     When a "DELETE" request is made to "/projects/101"
     Then the response status code is "400" 

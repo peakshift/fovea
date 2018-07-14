@@ -1,11 +1,12 @@
 Feature: Create Projects API
 
-  Background:
-    Given the database contains
-      | ID    | name        | status | description        | hours | client   | 
-      | zed   | ZipZap      | 0      | blockchain project | 120   | ZED      | 
+   
+  # Background:
+  #   Given the database contains
+  #     | ID    | name        | status | description        | hours | client   | 
+  #     | zed   | ZipZap      | 0      | blockchain project | 120   | ZED      | 
 
-  @api
+  @wip @api
   Scenario: Create a project
     When a "POST" request is made to "/projects" with the body
     """
@@ -30,7 +31,7 @@ Feature: Create Projects API
     """
 
 
-  @validation @api
+  @wip @validation @api
   Scenario: Validate "name" property is sent in request body
     When a "POST" request is made to "/projects" with the body
     """
@@ -50,7 +51,7 @@ Feature: Create Projects API
       }
     """
 
-  @validation @api
+  @wip @validation @api
   Scenario: Validate "status" property is sent in request body
     When a "POST" request is made to "/projects" with the body
     """
@@ -70,7 +71,7 @@ Feature: Create Projects API
       }
     """
 
-  @validation @api
+  @wip @validation @api
   Scenario: Validate "description" property is sent in request body
     When a "POST" request is made to "/projects" with the body
     """
@@ -90,7 +91,7 @@ Feature: Create Projects API
       }
     """
 
-  @validation @api
+  @wip @validation @api
   Scenario: Validate "hours" property is sent in request body
     When a "POST" request is made to "/projects" with the body
     """
@@ -110,7 +111,7 @@ Feature: Create Projects API
       }
     """
 
-  @validation @api
+  @wip @validation @api
   Scenario: Validate "client" property is sent in request body
     When a "POST" request is made to "/projects" with the body
     """
@@ -130,7 +131,7 @@ Feature: Create Projects API
       }
     """
 
-  @validation @api
+  @wip @validation @api
   Scenario: Validate all properties are sent in request body
     When a "POST" request is made to "/projects" with the body
     """
@@ -145,7 +146,7 @@ Feature: Create Projects API
       }
     """
 
-  @validation @api
+  @wip @validation @api
   Scenario: Validate datatype for 'status' property
     Given the system knows about the database 
     When a "POST" request is made to "/projects" with the body
@@ -167,7 +168,7 @@ Feature: Create Projects API
       }
     """
 
-  @validation @api
+  @wip @validation @api
   Scenario: Validate datatype for 'hours' property
     Given the system knows about the database
     When a "POST" request is made to "/projects" with the body

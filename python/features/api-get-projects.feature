@@ -1,13 +1,14 @@
 Feature: Get Projects API
 
-  Background: 
-    Given the database contains the following
-      | ID    | name        | status | description        | hours | client   | 
-      | blsm  | Blossom     | 0      | blockchain project | 90    | Blossom1 | 
-      | zed   | ZipZap      | 0      | blockchain project | 120   | ZED      | 
+  
+  # Background: 
+  #   Given the database contains the following
+  #     | ID    | name        | status | description        | hours | client   | 
+  #     | blsm  | Blossom     | 0      | blockchain project | 90    | Blossom1 | 
+  #     | zed   | ZipZap      | 0      | blockchain project | 120   | ZED      | 
 
 
-  @api
+  @wip @api
   Scenario: Get all projects
     Given the system knows about the database
     When a "GET" request is made to "/projects"
@@ -37,7 +38,7 @@ Feature: Get Projects API
       }
     """
   
-  @api
+  @wip @api
   Scenario: Get all projects with a specific status
     Given the system knows about the database
     When a "GET" request is made to "/projects/0"
@@ -67,7 +68,7 @@ Feature: Get Projects API
       }
     """
   
-  @api
+  @wip @api
   Scenario: Get all projects from a specific client
     Given the system knows about the database
     When a "GET" request is made "to /projects/Blossom1"
@@ -89,7 +90,7 @@ Feature: Get Projects API
       }
     """
 
-  @api
+  @wip @api
   Scenario: Get a specific project by ID
     Given the system knows about the database
     When a "GET" request is made to "/projects/123"
@@ -110,7 +111,7 @@ Feature: Get Projects API
       }
     """
   
-  @api
+  @wip @api
   Scenario: Get a specific project Name by ID
     Given the system knows about the database
     When a "GET" request is made to "/projects/123/name"
@@ -126,7 +127,7 @@ Feature: Get Projects API
       }
     """
   
-  @api   
+  @wip @api   
   Scenario: Get a specific project Status by ID
     Given the system knows about the database
     When a "GET" request is made to "/projects/123/status"
@@ -142,7 +143,7 @@ Feature: Get Projects API
       }
     """
   
-  @api
+  @wip @api
   Scenario: Get a specific project Description by ID
     Given the system knows about the database
     When a "GET" request is made to "/projects/123/description"
@@ -158,7 +159,7 @@ Feature: Get Projects API
       }
     """
   
-  @api
+  @wip @api
   Scenario: Get a specific project Hours by ID
     Given the system knows about the database
     When a "GET" request is made to "/projects/123/hours"
@@ -174,7 +175,7 @@ Feature: Get Projects API
       }
     """
   
-  @api
+  @wip @api
   Scenario: Get a specific project Client by ID
     Given the system knows about the database
     When a "GET" request is made to "/projects/123/client"
@@ -190,7 +191,7 @@ Feature: Get Projects API
       }
     """
 
-  @validation @api
+  @wip @validation @api
   Scenario: Validate get request by 'ID'
     Given the system knows about the database
     When a "GET" request is made to "/projects/120"
@@ -203,7 +204,7 @@ Feature: Get Projects API
       }
     """
 
-  @validation @api
+  @wip @validation @api
   Scenario: Validate get request by 'client'
     Given the system knows about the database
     When a "GET" request is made to "/projects?filters[client]=fovea"
@@ -216,7 +217,7 @@ Feature: Get Projects API
       }
     """
 
-  @validation @api
+  @wip @validation @api
   Scenario: Validate get request by 'status'
     Given the system knows about the database
     When a "GET" request is made to "/projects?filters[status]=3"

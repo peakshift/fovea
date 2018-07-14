@@ -1,12 +1,12 @@
 from behave import * 
 import json
 import requests
-from common import validate
+import common.validate as validation
 
-validate = validate.Validate()
-url = "http://localhost:3000"
+validate = validation.Validate()
+#url = "http://localhost:3000"
 
-
+'''
 @given(u'the database contains')
 def step_impl(context):
 	#instance of database
@@ -54,30 +54,15 @@ def step_impl(context):
 	rs_dict = json.loads(context.response.text)
 
 	assert  sc_dict == rs_dict
-
-
-@when(u'data is passed to Validator')
+'''
+@given(u'a "POST" request is made with the body')
 def step_impl(context):
-	data = json.loads(context.text)
-	assert (validate.check(data) == True)
+	context.data = json.loads(context.text)
 
-@when(u'data with a missing field is passed to Validator')
+@when(u'it is passed to Validator')
 def step_impl(context):
-	data = json.loads(context.text)
-	assert (validate.check(data) == False)
+	context.response = validate.check(context.data)
 
-@when(u'a field with an invalid datatype is passed to Validator')
-def step_impl(context):
-	data = json.loads(context.text)
-	assert (validate.check(data) == False)
-
-
-@when(u'no data is passed to Validator')
-def step_impl(context):
-	data = json.loads(context.text)
-	assert (validate.check(data) == False)
-
-
-@then(u'validation "{results}"')
+@then(u'validation returns "{results}"')
 def step_impl(context, results):
-	print ("Validation %r" % results)
+	assert str(context.response) == results

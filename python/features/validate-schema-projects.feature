@@ -1,9 +1,8 @@
 Feature: Projects Schema Validator
 
 
-
   Scenario: Valid if all fields are filled in
-    When data is passed to Validator 
+    Given a "POST" request is made with the body 
     """
       {
         "name": "blossom",
@@ -13,10 +12,11 @@ Feature: Projects Schema Validator
         "client": "Blossom1"
       }
     """
-    Then validation "passes"
+    When it is passed to Validator    
+    Then validation returns "True"
 
   Scenario: Invalid if missing a field
-    When data with a missing field is passed to Validator    
+    Given a "POST" request is made with the body 
     """
       {
         "status": 0,
@@ -25,10 +25,11 @@ Feature: Projects Schema Validator
         "client": "Blossom1"
       }
     """
-    Then validation "fails"
+    When it is passed to Validator    
+    Then validation returns "False"
 
   Scenario: Invalid if incorrect datatype is used  
-    When a field with an invalid datatype is passed to Validator 
+    Given a "POST" request is made with the body
     """
       {
         "name": "blossom",
@@ -37,12 +38,14 @@ Feature: Projects Schema Validator
         "hours": "90hrs",
         "client": "Blossom1"
       }
-    """
-    Then validation "fails"
+    """ 
+    When it is passed to Validator    
+    Then validation returns "False"
 
   Scenario: Invalid if missing multiple fields
-    When no data is passed to Validator 
+    Given a "POST" request is made with the body 
     """
       {}
     """
-    Then validation "fails"
+    When it is passed to Validator
+    Then validation returns "False"
