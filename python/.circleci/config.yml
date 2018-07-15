@@ -22,3 +22,8 @@ jobs:
           name: "run tests"
           command: 
             pipenv behave --tags=~@wip
+workflows:
+  version: 2
+  testing:
+    jobs:
+      - test-python
