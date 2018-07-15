@@ -1,6 +1,6 @@
 version: 2
 jobs: 
-  build: 
+  test-python: 
     branches: 
       only: 
         - develop
@@ -12,6 +12,7 @@ jobs:
       - run:
           name: "install python dependencies"
           command: |
+            cd python
             pipenv install
       - run:
           name: "starting API test server"
