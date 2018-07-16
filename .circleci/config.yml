@@ -9,9 +9,7 @@ jobs:
       - run:
           name: "install python dependencies"
           command: |
-            pwd
-            cd ~/peakshift-services/python
-            pipenv install
+            pwd && ls && pipenv install && ls && pwd
       - run:
           name: "starting API test server"
           command: |
