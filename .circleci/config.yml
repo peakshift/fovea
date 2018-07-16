@@ -9,17 +9,22 @@ jobs:
       - run:
           name: "install python dependencies"
           command: |
+            pwd
             cd ~/peakshift-services/python
             pipenv install
       - run:
           name: "starting API test server"
           command: |
+            pwd
             cd ~/peakshift-services/python
-            pipenv run python run.py
+            pwd
+            pipenv run python ./run.py
       - run:
           name: "run tests"
           command: 
+            pwd
             cd ~/peakshift-services/python
+            pwd
             pipenv run behave --tags=~@wip
 workflows:
   version: 2
