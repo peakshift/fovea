@@ -12,7 +12,7 @@ jobs:
       - run:
           name: "install python dependencies"
           command: |
-            cd python
+            cd ~/peakshift-services/python
             pipenv install
       - run:
           name: "starting API test server"
