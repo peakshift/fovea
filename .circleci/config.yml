@@ -6,7 +6,7 @@ jobs:
         - develop
     docker: 
       - image: "circleci/python:3.6"
-    working_directory: ~/peakshift-services
+    working_directory: ~/peakshift-services/python
     steps: 
       - checkout
       - run:
