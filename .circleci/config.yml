@@ -15,10 +15,7 @@ jobs:
       - run:
           name: "starting API test server"
           command: |
-            pwd
-            cd ~/peakshift-services/python
-            pwd
-            pipenv run python ./run.py
+            pwd && ls && pipenv run python ~/peakshift-services/python/run.py
       - run:
           name: "run tests"
           command: 
