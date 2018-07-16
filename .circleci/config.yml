@@ -14,10 +14,12 @@ jobs:
       - run:
           name: "starting API test server"
           command: |
+            cd ~/peakshift-services/python
             pipenv run python run.py
       - run:
           name: "run tests"
           command: 
+            cd ~/peakshift-services/python
             pipenv run behave --tags=~@wip
 workflows:
   version: 2
