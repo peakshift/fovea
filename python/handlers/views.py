@@ -15,10 +15,13 @@ def post():
     # else:
     #     return jsonify({"msg": "Project created."}), 201
 
-    try:
-        if validate.isvalid(request_data) == True:
-            return jsonify({"msg": "Project created."}), 201
-    except Exception as e:
-        return jsonify("e"), 400
+    message = validate.isvalid(request_data)
+    print(message)
+
+    if message is True:
+        return jsonify({"msg": "Project created."}), 201
+    else:
+        return jsonify(message), 400
+
 
 

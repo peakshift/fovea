@@ -39,11 +39,11 @@ Feature: Create Projects API
     And the response body is
     """
       {
-        "msg": "Project not created."
+        "msg": "Invalid request. 'name' is a required property"
       }
     """
 
-  @wip @validation @api
+  @validation @api
   Scenario: Validate "status" property is sent in request body
     When a "POST" request is made to "/projects" with the body
     """
@@ -59,11 +59,11 @@ Feature: Create Projects API
     And the response body is
     """
       {
-        "msg": "Invalid request. 'status' property is missing."
+        "msg": "Invalid request. 'status' is a required property"
       }
     """
 
-  @wip @validation @api
+  @validation @api
   Scenario: Validate "description" property is sent in request body
     When a "POST" request is made to "/projects" with the body
     """
@@ -79,11 +79,11 @@ Feature: Create Projects API
     And the response body is
     """
       {
-        "msg": "Invalid request. 'description' property is missing."
+        "msg": "Invalid request. 'description' is a required property"
       }
     """
 
-  @wip @validation @api
+  @validation @api
   Scenario: Validate "hours" property is sent in request body
     When a "POST" request is made to "/projects" with the body
     """
@@ -99,11 +99,11 @@ Feature: Create Projects API
     And the response body is
     """
       {
-        "msg": "Invalid request. 'hours' property is missing."
+        "msg": "Invalid request. 'hours' is a required property"
       }
     """
 
-  @wip @validation @api
+  @validation @api
   Scenario: Validate "client" property is sent in request body
     When a "POST" request is made to "/projects" with the body
     """
@@ -119,11 +119,11 @@ Feature: Create Projects API
     And the response body is
     """
       {
-        "msg": "Invalid request. 'client' property is missing."
+        "msg": "Invalid request. 'client' is a required property"
       }
     """
 
-  @wip @validation @api
+  @validation @api
   Scenario: Validate all properties are sent in request body
     When a "POST" request is made to "/projects" with the body
     """
@@ -134,7 +134,7 @@ Feature: Create Projects API
     And the response body is
     """
       {
-        "msg": "Invalid request. Multiple properties are missing."
+        "msg": "Invalid request. 'name' is a required property"
       }
     """
 

@@ -1,4 +1,5 @@
 from jsonschema import validate
+from handlers.error_handler import error_msg
 
 
 class Validate:
@@ -42,6 +43,5 @@ class Validate:
             validate(data, self.schema)
             return True
         except Exception as e:
-            msg = [word for word in str(e).split('\n')]
-            print(msg[0])
-            return e
+            error = error_msg(e)
+            return error
