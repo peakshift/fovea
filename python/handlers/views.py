@@ -10,14 +10,8 @@ validate = validation.Validate()
 def post():
     request_data = request.get_json()
 
-    # if validate.check(request_data) == False:
-    #     return jsonify({"msg": "Project not created."}), 400
-    # else:
-    #     return jsonify({"msg": "Project created."}), 201
-
     message = validate.isvalid(request_data)
     print(message)
-
     if message is True:
         return jsonify({"msg": "Project created."}), 201
     else:

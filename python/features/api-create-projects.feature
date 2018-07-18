@@ -138,7 +138,7 @@ Feature: Create Projects API
       }
     """
 
-  @wip @validation @api
+  @validation @api
   Scenario: Validate datatype for 'status' property
     When a "POST" request is made to "/projects" with the body
      """
@@ -155,11 +155,11 @@ Feature: Create Projects API
     And the response body is
     """
       {
-        "msg": "Invalid request. Incorrect data type."
+        "msg": "Invalid request. 'to-do' is not one of [0, 1, 2]"
       }
     """
 
-  @wip @validation @api
+  @validation @api
   Scenario: Validate datatype for 'hours' property
     When a "POST" request is made to "/projects" with the body
      """
@@ -176,7 +176,7 @@ Feature: Create Projects API
     And the response body is
     """
       {
-        "msg": "Invalid request. Incorrect data type."
+        "msg": "Invalid request. '90hrs' is not of type 'number'"
       }
     """
 

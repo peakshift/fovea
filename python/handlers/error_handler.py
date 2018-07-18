@@ -6,7 +6,7 @@ def error_msg(errorLog):
     :param errorLog (exception): the full log message
     :return error(dict) : the specific error that occurred
     """
-    errorList = [word for word in str(errorLog).split('\n')]
+    errorList = [line for line in str(errorLog).split('\n')]
     errorMsg = "Invalid request. " + errorList[0]
     error = {
         "msg": errorMsg

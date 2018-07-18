@@ -1,7 +1,13 @@
 Feature: Projects Mongodb Connection
 
 #needs to be written up properly
+"""
+-would need to connect to the database
+-would need to ensure credentials are correct
+-search for valid and invalid records
+-access valid and invalid tables
 
+"""
 @wip @mongodb
 Scenario: Connection has started 
   When a request is made to the database
