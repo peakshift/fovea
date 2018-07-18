@@ -10,7 +10,7 @@ Only authorised persons can perform such actions
 
   @wip @api
   Scenario: Delete a specific project by ID
-    When a "DELETE" request is made to "/projects/100"
+    When a "DELETE" request is made to "/projects/1"
     Then the response status code is "200" 
     And the "Content-Type" header value is "application/json"
     And the response body is

@@ -13,7 +13,7 @@ Feature: Projects Schema Validator
       }
     """
     When it is passed to Validator    
-    Then validation returns "True"
+    Then validation passes
 
   Scenario: Invalid if missing a field
     Given a "POST" request is made with the body 
@@ -26,7 +26,7 @@ Feature: Projects Schema Validator
       }
     """
     When it is passed to Validator    
-    Then validation returns "False"
+    Then validation fails
 
   Scenario: Invalid if incorrect datatype is used  
     Given a "POST" request is made with the body
@@ -40,7 +40,7 @@ Feature: Projects Schema Validator
       }
     """ 
     When it is passed to Validator    
-    Then validation returns "False"
+    Then validation fails
 
   Scenario: Invalid if missing multiple fields
     Given a "POST" request is made with the body 
@@ -48,4 +48,4 @@ Feature: Projects Schema Validator
       {}
     """
     When it is passed to Validator
-    Then validation returns "False"
+    Then validation fails

@@ -131,7 +131,7 @@ Feature: Update Projects API
     And the response body is
     """
       {
-        "msg": "Invalid request. Incorrect data type."
+        "msg": "Invalid request. 'to-do' is not one of [0, 1, 2]"
       }
     """
 
@@ -149,6 +149,6 @@ Feature: Update Projects API
     And the response body is
     """
       {
-        "msg": "Invalid request. Incorrect data type."
+        "msg": "Invalid request. '100hrs' is not of type 'number'"
       }
     """
