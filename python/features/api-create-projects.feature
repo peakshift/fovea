@@ -1,7 +1,12 @@
 Feature: Create Projects API
 
 
-  @api
+  # Background:
+  #   Given the database contains
+  #     | ID    | name        | status | description        | hours | client   |
+  #     | zed   | ZipZap      | 0      | blockchain project | 120   | ZED      |
+
+  @wip @api
   Scenario: Create a project
     When a "POST" request is made to "/projects" with the body
     """
@@ -18,12 +23,15 @@ Feature: Create Projects API
     And the response body is
     """
       {
+        "data": {
+          "id": "blsm"
+        },
         "msg": "Project created."
       }
     """
 
 
-  @validation @api
+  @wip @validation @api
   Scenario: Validate "name" property is sent in request body
     When a "POST" request is made to "/projects" with the body
     """
@@ -35,15 +43,15 @@ Feature: Create Projects API
       }
     """
     Then the response status code is "400"
-    And the "Content-Type" header value is "application/json"
+    And the "Content-Type" header is "application/json"
     And the response body is
     """
       {
-        "msg": "Invalid request. 'name' is a required property"
+        "msg": "Invalid request. 'name' property is missing."
       }
     """
 
-  @validation @api
+  @wip @validation @api
   Scenario: Validate "status" property is sent in request body
     When a "POST" request is made to "/projects" with the body
     """
@@ -55,15 +63,15 @@ Feature: Create Projects API
       }
     """
     Then the response status code is "400"
-    And the "Content-Type" header value is "application/json"
+    And the "Content-Type" header is "application/json"
     And the response body is
     """
       {
-        "msg": "Invalid request. 'status' is a required property"
+        "msg": "Invalid request. 'status' property is missing."
       }
     """
 
-  @validation @api
+  @wip @validation @api
   Scenario: Validate "description" property is sent in request body
     When a "POST" request is made to "/projects" with the body
     """
@@ -75,15 +83,15 @@ Feature: Create Projects API
       }
     """
     Then the response status code is "400"
-    And the "Content-Type" header value is "application/json"
+    And the "Content-Type" header is "application/json"
     And the response body is
     """
       {
-        "msg": "Invalid request. 'description' is a required property"
+        "msg": "Invalid request. 'description' property is missing."
       }
     """
 
-  @validation @api
+  @wip @validation @api
   Scenario: Validate "hours" property is sent in request body
     When a "POST" request is made to "/projects" with the body
     """
@@ -95,15 +103,15 @@ Feature: Create Projects API
       }
     """
     Then the response status code is "400"
-    And the "Content-Type" header value is "application/json"
+    And the "Content-Type" header is "application/json"
     And the response body is
     """
       {
-        "msg": "Invalid request. 'hours' is a required property"
+        "msg": "Invalid request. 'hours' property is missing."
       }
     """
 
-  @validation @api
+  @wip @validation @api
   Scenario: Validate "client" property is sent in request body
     When a "POST" request is made to "/projects" with the body
     """
@@ -111,35 +119,36 @@ Feature: Create Projects API
         "name": "Blossom",
         "status": 0,
         "description": "blockchain project",
-        "hours": 90
+        "hours": 90,
       }
     """
     Then the response status code is "400"
-    And the "Content-Type" header value is "application/json"
+    And the "Content-Type" header is "application/json"
     And the response body is
     """
       {
-        "msg": "Invalid request. 'client' is a required property"
+        "msg": "Invalid request. 'client' property is missing."
       }
     """
 
-  @validation @api
+  @wip @validation @api
   Scenario: Validate all properties are sent in request body
     When a "POST" request is made to "/projects" with the body
     """
       {}
     """
     Then the response status code is "400"
-    And the "Content-Type" header value is "application/json"
+    And the "Content-Type" header is "application/json"
     And the response body is
     """
       {
-        "msg": "Invalid request. 'name' is a required property"
+        "msg": "Invalid request. Multiple properties are missing."
       }
     """
 
-  @validation @api
+  @wip @validation @api
   Scenario: Validate datatype for 'status' property
+    Given the system knows about the database
     When a "POST" request is made to "/projects" with the body
      """
       {
@@ -150,17 +159,18 @@ Feature: Create Projects API
         "client": "Blossom1"
       }
     """
-    Then the response status code is "400" 
+    Then the response status code is "400"
     And the "Content-Type" header value is "application/json"
     And the response body is
     """
       {
-        "msg": "Invalid request. 'to-do' is not one of [0, 1, 2]"
+        "msg": "Invalid request. Incorrect data type."
       }
     """
 
-  @validation @api
+  @wip @validation @api
   Scenario: Validate datatype for 'hours' property
+    Given the system knows about the database
     When a "POST" request is made to "/projects" with the body
      """
       {
@@ -171,12 +181,12 @@ Feature: Create Projects API
         "client": "Blossom1"
       }
     """
-    Then the response status code is "400" 
+    Then the response status code is "400"
     And the "Content-Type" header value is "application/json"
     And the response body is
     """
       {
-        "msg": "Invalid request. '90hrs' is not of type 'number'"
+        "msg": "Invalid request. Incorrect data type."
       }
     """
 
