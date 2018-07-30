@@ -26,12 +26,11 @@ When making changes or adding a new feature, to ensure the feature works correct
 *[Behave Framework Docs](https://behave.readthedocs.io/en/latest/) 
 
 To begin testing your scenarios
+- run `pipenv install behave`
 - run `pipenv run behave`
 - if it passes
   - commit and push your branch
-  - checkout develop and merge your branch
-  - push the develop branch
-  - open a pull request for your branch in master
+  - open a pull request for your branch in develop
 - if it fails
   - fix the problem so all tests pass
 
