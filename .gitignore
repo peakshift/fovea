@@ -1,14 +1,14 @@
 # package directories
 node_modules
-jspm_packages
-lib/transformer/virtual_env
+js/npm_packages
+virtual_env
 
 # Serverless directories
 .serverless
 .idea
 
- # Environments
- .env
+# Environments
+.env
 
  # Byte-compiled / optimized / DLL files
  __pycache__
