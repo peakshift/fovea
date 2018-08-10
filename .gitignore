@@ -12,3 +12,4 @@ lib/transformer/virtual_env
 
  # Byte-compiled / optimized / DLL files
  __pycache__
+*.pyc

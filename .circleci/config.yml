@@ -1,0 +1,33 @@
+version: 2
+jobs: 
+  test-python: 
+    docker: 
+      - image: "circleci/python:3.6"
+    working_directory: ~/peakshift-services/python
+    steps: 
+      - checkout
+      - run:
+          name: "install python dependencies"
+          command: |
+            pwd
+            cd ~/peakshift-services/python
+            pipenv install
+      - run:
+          name: "starting API test server"
+          command: |
+            pwd
+            cd ~/peakshift-services/python
+            pwd
+            pipenv run python ./run.py
+      - run:
+          name: "run tests"
+          command: 
+            pwd
+            cd ~/peakshift-services/python
+            pwd
+            pipenv run behave --tags=~@wip
+workflows:
+  version: 2
+  testing:
+    jobs:
+      - test-python
