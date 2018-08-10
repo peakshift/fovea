@@ -1,6 +1,4 @@
 from jsonschema import validate
-from handlers.error_handler import error_msg
-
 
 class Validate:
     def __init__(self):

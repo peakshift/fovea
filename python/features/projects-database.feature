@@ -1,60 +1,62 @@
-Feature: Projects Mongodb Connection
+Feature: Projects Database Connection
 
-#needs to be written up properly
 
-@wip @mongodb
-Scenario: Connection has started
-  When a request is made to the database
-  Then the database can be accessed
+  Scenario: Insert document into collection
+    Given inputdata is
+    """
+      {
+        "name": "Blossom",
+        "status": 0,
+        "description": "blockchain project",
+        "hours": 90,
+        "client": "Blossom1"
+      }
+    """
+    When the insert("test", inputdata) method is invoked
+    Then the ID of the new document is returned
 
-@wip @mongodb
-Scenario: Connection has not started
-  When a request is made to the database
-  Then an error is thrown
+  Scenario: Retrieve all documents from a collection
+    When the get("test") method is invoked
+    Then all the documents in the collection is returned
 
-@wip @mongodb
-Scenario: Credentials are valid
-  When valid credentials are used
-  Then the database can be accessed
+  Scenario: Update a document in the collection
+    Given inputdata is
+    """
+      {
+        "status": 1
+      }
+    """
+    And the document ID is "1"
+    When the update("test", inputdata, 1) method is invoked
+    Then the document is updated
 
-@wip @mongodb
-Scenario: Credentials are invalid
-  When an invalid credential is used
-  Then an error is thrown
+  Scenario: Retrieve a document from a collection
+    Given the document ID is "1"
+    When the getbyid("test", 1) method is invoked
+    Then the document is returned
 
-@wip @mongodb
-Scenario: Accessing existing database
-  Given the connection exists
-  When the database is accessed
-  Then the data is returned
+  Scenario: Delete a document in the collection
+    Given the document ID is "1"
+    When the delete("test", 1) method is invoked
+    Then the document is deleted
 
-@wip @mongodb
-Scenario: Accessing a database that does not exist
-  Given a connection exists
-  When the database is accessed
-  Then it is created
+  Scenario: Failure to update a document in the collection
+    Given inputdata is
+    """
+      {
+        "status": 1
+      }
+    """
+    And the document ID is "100"
+    When the update("test", inputdata, 100) method is invoked
+    Then the request fails
 
-@wip @mongodb
-Scenario: Accessing existing Collection
-  Given the database exists
-  When the search is performed
-  Then the data is returned
+  Scenario: Failure to retrieve a document from a collection
+    Given the document ID is "100"
+    When the getbyid("test", 100) method is invoked
+    Then the request returns null
 
-@wip @mongodb
-Scenario: Accessing a collection that does not exist
-  Given the database exists
-  When the search is performed
-  Then an error is thrown
-
-@wip @mongodb
-Scenario: Accessing existing data
-  Given the collection exists
-  When a search is performed
-  Then the data is returned
-
-@wip @mongodb
-Scenario: Accessing data that does not exist
-  Given the collection exists
-  When a search is performed
-  Then an error is thrown
-
+  Scenario: Failure to delete an unknown document in the collection
+    Given the document ID is "100"
+    When the delete("test", 100) method is invoked
+    Then the request fails
