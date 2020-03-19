@@ -1,7 +1,7 @@
 # package directories
 node_modules
 jspm_packages
-lib/transformer/virtual_env
+virtual_env
 
 # Serverless directories
 .serverless
@@ -12,3 +12,5 @@ lib/transformer/virtual_env
 
  # Byte-compiled / optimized / DLL files
  __pycache__
+*.pyc
+__pycache__
