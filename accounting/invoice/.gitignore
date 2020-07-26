@@ -1,0 +1,7 @@
+.DS_Store
+__pycache__
+render_invoce/invoice/index.html
+invoice_data/entities/priv_*
+env
+.python-version
+*fonts*

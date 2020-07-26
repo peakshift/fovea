@@ -1,0 +1,18 @@
+export HARVEST_API_KEY="<api-key>"
+export HARVEST_ACCOUNT_ID="<account-id>"
+
+export RENDER_DIR=render_invoice
+
+export CLIENT=client
+export PROVIDER=peakshift
+
+export REF_NUM=0101CLIENT01
+export INV_NUM=001
+export WORK_TYPE="Software Development"
+export RATE=100
+
+export ACCOUNT_NO=1000000
+export IBAN=RAND298e40
+export BIC_SWIFT=STLUC12F
+
+export CURR_SYMBOL=€

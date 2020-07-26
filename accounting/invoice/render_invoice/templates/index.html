@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <title>Peak Shift Invoice</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+      <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+    <body>
+      <header>
+        <div class="logo">
+          <img src="image/logo.svg" alt="Peak Shift Logo">
+        </div>
+        {{{ right_details }}}
+        {{{ left_details }}}
+      </header>
+      <div id="container">
+        <div id="data">
+          <table class="data" cellpadding="15">
+            <thead>
+              <tr>
+                <th>LABEL</th>
+                <th>DESCRIPTION</th>
+                <th>HOURS</th>
+                <th>TOTAL</th>
+              </tr>
+            </thead>
+            {{{ table }}}
+          </table>
+        </div>
+        {{{ amount }}}
+        <div id="banking">
+          <h2 class="left">Payment Details</h2>
+          <table class="left bank" cellpadding="5">
+            <tbody>
+              <tr>
+                <th>VAT NO.</th>
+                <td>BG204478925</td>
+              </tr>
+              <tr>
+                <th>ACCOUNT NAME</th>
+                <td>Peak Shift Ltd.</td>
+              </tr>
+              <tr>
+                <th>ACCOUNT NO.</th>
+                <td>{{ account_no }}</td>
+              </tr>
+              <tr>
+                <th>IBAN</th>
+                <td>{{ iban }}</td>
+              </tr>
+              <tr>
+                <th>BIC/SWIFT</th>
+                <td>{{ bic_swift }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="left">
+            <h2>Bank</h2>
+            <address>
+              Bank Road </br>
+              Bank City, 1000 </br>
+              Bulgaria </br>
+            </address>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <h2>Vat Reverse Charge</h2>
+        <div class="note">
+          <p>The <strong> VAT</strong> is payable from the recipient of the invoice according Art.196 and 56 from Directive 2006/112/EO and Art.21(2) and Art.25(6)2 from the Bulgarian <strong>VAT Law</strong></p>
+        </div>
+      </footer>
+    </body>
+  </html>

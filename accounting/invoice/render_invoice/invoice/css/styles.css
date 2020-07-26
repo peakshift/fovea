@@ -1,0 +1,310 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Tisa OT";
+  src: url(../fonts/FF-Tisa-OT-Light-Italic.otf);
+}
+@font-face {
+  font-family: "UniversLt";
+  src: url(../fonts/UniversLTStd-LightCn.otf);
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: #7F7F7F;
+  line-height: 1.5em;
+  font-size: 1.4em;
+  font-family: "Tisa OT";
+}
+@media all and (max-width: 720px) {
+  body {
+    font-size: 1.2em;
+  }
+}
+
+h2, th {
+  color: #3F3F3F;
+  font-size: 1em;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-family: "UniversLt";
+}
+
+ul {
+  padding-left: 0;
+  list-style: none inside;
+}
+
+a {
+  color: #7F7F7F;
+}
+
+address {
+  font-style: normal;
+}
+
+h2, ul, p {
+  margin: 0.15em 0;
+}
+
+th {
+  letter-spacing: 1px;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+/*/--------Header--------/*/
+header {
+  width: 95%;
+  margin: 0 auto;
+  padding: 0 1.9em;
+  overflow: hidden;
+}
+@media all and (max-width: 720px) {
+  header {
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+header .logo {
+  left: -45px;
+  overflow: hidden;
+  margin-bottom: 2em;
+  position: relative;
+}
+@media all and (max-width: 720px) {
+  header .logo {
+    position: relative;
+    left: 0;
+  }
+}
+@media all and (max-width: 500px) {
+  header .logo img {
+    width: 100%;
+  }
+}
+header #project {
+  height: 100%;
+  display: inline-block;
+  margin-right: 0;
+  text-align: right;
+}
+@media all and (max-width: 960px) {
+  header #project {
+    text-align: left;
+    margin-bottom: 1em;
+  }
+}
+header #project .ref {
+  width: 100%;
+  font-family: "UniversLt";
+}
+header #project .ref th {
+  padding-right: 2em;
+}
+header #project .ref tr:nth-last-child(-n+3) {
+  font-family: "Tisa OT" !important;
+}
+header #project .ref tr:nth-last-child(-n+3) .none {
+  font-weight: bold;
+  text-transform: none;
+  letter-spacing: normal;
+  font-family: "Tisa OT" !important;
+}
+@media all and (max-width: 960px) {
+  header .details {
+    float: none;
+  }
+}
+header .details h2 {
+  font-size: 1.25em;
+  padding-bottom: 0.3em;
+}
+header .details .address {
+  color: #3F3F3F;
+  margin-bottom: 1em;
+  height: 100%;
+  display: inline-block;
+  margin-right: 4em;
+}
+header .details .address h2 {
+  font-family: "UniversLt";
+}
+header .details .address p {
+  font-weight: bolder;
+}
+
+#container {
+  width: 95%;
+  margin: 0 auto;
+  padding: 0 1.9em;
+}
+@media all and (max-width: 720px) {
+  #container {
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+#container #data {
+  margin-top: 1em;
+  overflow-x: auto;
+}
+#container #data .data {
+  min-width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+#container #data .data thead {
+  border-bottom: 5px solid #DD1E3E;
+}
+#container #data .data thead th {
+  color: #7F7F7F;
+  white-space: nowrap;
+}
+#container #data .data thead th:last-child, #container #data .data thead th:nth-last-child(2) {
+  text-align: right;
+}
+#container #data .data tbody tr {
+  border-bottom: 1px dotted #E8E8E8;
+}
+#container #data .data tbody tr td {
+  white-space: nowrap;
+  vertical-align: top;
+}
+#container #data .data tbody tr td:last-child, #container #data .data tbody tr td:nth-last-child(2) {
+  text-align: right;
+  font-family: "UniversLt";
+}
+#container #data .data tbody tr td li::before {
+  content: "›";
+  color: #DD1E3E;
+  font-weight: bold;
+  margin-right: 12px;
+}
+#container #amount {
+  margin: 1.5em 0;
+  overflow: hidden;
+  font-family: "UniversLt";
+}
+#container #amount .tally {
+  height: 100%;
+  display: inline-block;
+  margin-right: 0;
+  float: right;
+  text-align: right;
+}
+@media all and (max-width: 960px) {
+  #container #amount .tally {
+    text-align: left;
+    float: none;
+  }
+}
+#container #amount .tally th {
+  padding-right: 2em;
+  color: #DD1E3E;
+}
+#container #banking {
+  color: #3F3F3F;
+  overflow: hidden;
+  margin-bottom: 0.5em;
+  border-top: 5px solid #E8E8E8;
+  border-bottom: 5px solid #E8E8E8;
+}
+@media all and (max-width: 960px) {
+  #container #banking {
+    padding: 0.5em 0;
+  }
+}
+#container #banking h2 {
+  height: 100%;
+  display: inline-block;
+  margin-right: 4em;
+  padding-right: 1em;
+}
+#container #banking .bank {
+  height: 100%;
+  display: inline-block;
+  margin-right: 1em;
+  border-collapse: collapse;
+}
+@media all and (max-width: 960px) {
+  #container #banking .bank {
+    margin-bottom: 1em;
+  }
+}
+#container #banking .bank tbody th {
+  padding-right: 2em;
+  color: #DD1E3E;
+}
+#container #banking .bank tbody tr {
+  text-align: left;
+  border-right: 1px dotted #7F7F7F;
+  border-bottom: 1px dotted #7F7F7F;
+}
+#container #banking .bank tbody tr:last-child {
+  border-bottom: none;
+}
+@media all and (max-width: 960px) {
+  #container #banking .bank tbody tr td {
+    word-break: break-all;
+  }
+}
+#container #banking div {
+  height: 100%;
+  display: inline-block;
+  margin-right: 0;
+}
+#container #banking div h2 {
+  color: #DD1E3E;
+}
+
+footer {
+  width: 95%;
+  margin: 0 auto;
+  padding: 0 1.9em;
+  margin-bottom: 3em;
+  overflow: hidden;
+}
+@media all and (max-width: 720px) {
+  footer {
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+@media all and (max-width: 960px) {
+  footer {
+    padding: 0.5em 0;
+  }
+}
+footer h2 {
+  height: 100%;
+  display: inline-block;
+  margin-right: 2em;
+  padding-right: 2em;
+  vertical-align: top;
+}
+footer .note {
+  height: 100%;
+  display: inline-block;
+  margin-right: 0;
+  vertical-align: top;
+  max-width: 62%;
+}
+@media all and (max-width: 960px) {
+  footer .note {
+    max-width: 100%;
+    float: none;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

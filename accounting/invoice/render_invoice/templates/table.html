@@ -1,0 +1,18 @@
+<tbody>
+  {{#rows}}
+  <tr>
+    <td><h2>{{ label.text }}</h2></td>
+    <td>
+      <h2>{{ description.title }}</h2>
+      <p>{{ description.body }}</p>
+      <ul class="lists">
+        {{#description.bullets}}
+        <li>{{{ bullet_point }}}</li>
+        {{/description.bullets}}
+      </ul>
+    </td>
+    <td>{{ quantity.amount }}</td>
+    <td>{{ total.amount }}</td>
+  </tr>
+  {{/rows}}
+</tbody>
