@@ -1,0 +1,12 @@
+{
+    "Bed Money": {
+        "client": "Grant People",
+        "hours": 4,
+        "notes": {
+            "Did some interviews": {
+                "hours": 4,
+                "count": 4
+            }
+        }
+    }
+}

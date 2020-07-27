@@ -1,0 +1,54 @@
+[
+  {
+    "label": {
+      "text": "Service"
+    },
+    "description": {
+      "title": "Lorem Ipsum Set Amet",
+      "body": "Duis lacus ante, eleifend ut arcu in, porta dignissim nunc.",
+      "bullets": [
+        {
+          "bullet_point": "<a href=\"\">example1.com</a> &mdash; v1.0.0"
+        },
+        {
+          "bullet_point": "<a href=\"\">example2.com</a> &mdash; v1.0.0"
+        },
+        {
+          "bullet_point": "<a href=\"\">example3.com</a> &mdash; v1.0.0"
+        }
+      ]
+    },
+    "quantity": {
+      "amount": "4"
+    },
+    "total": {
+      "amount": "$4,000.00"
+    }
+  },
+  {
+    "label": {
+      "text": "Other Service"
+    },
+    "description": {
+      "title": "Lorem Ipsum Set Amet",
+      "body": "Duis lacus ante, eleifend ut arcu in, porta dignissim nunc.",
+      "bullets": [
+        {
+          "bullet_point": "<a href=\"\">example4.com</a> &mdash; v1.0.0"
+        },
+        {
+          "bullet_point": "<a href=\"\">example5.com</a> &mdash; v1.0.0"
+        },
+        {
+          "bullet_point": "<a href=\"\">example6.com</a> &mdash; v1.0.0"
+        }
+      ]
+    },
+    "quantity": {
+      "amount": "16"
+    },
+    "total": {
+      "amount": "$16,000.00"
+    }
+  }
+]

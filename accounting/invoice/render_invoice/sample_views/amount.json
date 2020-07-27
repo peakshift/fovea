@@ -1,0 +1,16 @@
+{
+  "amounts": [
+    {
+      "title": "TOTAL AMOUNT DUE",
+      "amount": "$276,000.00"
+    },
+    {
+      "title": "VAT 0%*",
+      "amount": "$0.00"
+    },
+    {
+      "title": "GRAND TOTAL",
+      "amount": "$276,000.00"
+    }
+  ]
+}

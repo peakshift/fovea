@@ -1,0 +1,310 @@
+@font-face {
+	font-family: 'Tisa OT';
+	src: url(../fonts/FF-Tisa-OT-Light-Italic.otf);
+}
+
+@font-face {
+  font-family: 'UniversLt';
+  src: url(../fonts/UniversLTStd-LightCn.otf);
+}
+
+
+//VARIABLES
+$lightgrey: #E8E8E8;
+$black: #3F3F3F;
+$grey: #7F7F7F;
+$pink: #DD1E3E;
+
+$fontsize: 1.4em;
+$Univers-font: 'UniversLt';
+$Tisa-font: 'Tisa OT';
+
+//MIXINS
+@mixin layout{
+  width: 95%;
+  margin: 0 auto;
+  padding: 0 1.9em;
+}
+@mixin inline($val){
+  height: 100%;
+  display: inline-block;
+  margin-right: $val;
+}
+
+//STYLES
+*{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+  color: $grey;
+  line-height: 1.5em;
+  font-size: $fontsize;
+  font-family: $Tisa-font;
+  @media all and (max-width: 720px){
+    font-size: 1.2em;
+  }
+}
+
+h2, th{
+  color: $black;
+  font-size: 1em;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-family: $Univers-font;
+}
+
+ul{
+  padding-left: 0;
+  list-style: none inside;
+}
+
+a{
+  color: $grey;
+}
+
+address{
+  font-style: normal;
+}
+
+h2, ul, p{
+  margin: .15em 0;
+}
+
+th{
+  letter-spacing: 1px;
+}
+
+//--------Classes--------//
+
+.left{
+  float: left;
+}
+
+.right{
+  float: right;
+}
+
+
+/*/--------Header--------/*/
+
+header{
+  @include layout;
+  overflow: hidden;
+  @media all and (max-width: 720px){
+    margin: 0 auto;
+    padding: 0;
+  }
+  .logo{
+    left: -45px;
+    overflow: hidden;
+    margin-bottom: 2em;
+    position: relative;
+    @media all and (max-width: 720px){
+      position: relative;
+      left: 0;
+    }
+    @media all and (max-width: 500px){
+      img{
+        width: 100%;
+      }
+    }
+  }
+  #project{
+    @include inline(0);
+    text-align: right;
+    @media all and (max-width: 960px){
+      text-align: left;
+      margin-bottom: 1em;
+    }
+    .ref {
+      width: 100%;
+      font-family: $Univers-font;
+      th{
+        padding-right: 2em;
+      }
+      tr:last-child{
+        font-family: $Tisa-font!important;
+        .none{
+          font-weight: bold;
+          text-transform: none;
+          letter-spacing: normal;
+          font-family: $Tisa-font!important;
+        }
+      }
+    }
+  }
+  .details {
+    @media all and (max-width: 960px){
+      float: none;
+    }
+    h2{
+      font-size: 1.25em;
+      padding-bottom: .3em;
+    }
+    .address{
+      color: $black;
+      margin-bottom: 1em;
+      @include inline(4em);
+      h2{
+        font-family: $Univers-font;
+      }
+      p{
+        font-weight: bolder;
+      }
+    }
+  }
+}
+
+
+//--------Container--------//
+
+#container{
+  @include layout;
+  @media all and (max-width: 720px){
+    margin: 0 auto;
+    padding: 0;
+  }
+  #data{
+    margin-top: 1em;
+    overflow-x: auto;
+    .data{
+      min-width: 100%;
+      text-align: left;
+      border-collapse: collapse;
+      thead{
+        border-bottom: 5px solid $pink;
+        th{
+          color: $grey;
+          white-space: nowrap;
+          // This needs to be changed to apply to last 3 rows (-n+3)
+          &:last-child, &:nth-last-child(2){
+            text-align: right;
+          }
+        }
+      }
+      tbody{
+        tr{
+          border-bottom: 1px dotted $lightgrey;
+          td{
+            white-space: nowrap;
+            vertical-align: top;
+            // This needs to be changed to apply to last 3 rows (-n+3)
+            &:last-child,&:nth-last-child(2){
+              text-align: right;
+              font-family: $Univers-font;
+            }
+            li{
+              &::before{
+                content: "\203A";
+                color: $pink;
+                font-weight: bold;
+                margin-right: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #amount{
+    margin: 1.5em 0;
+    overflow: hidden;
+    font-family: $Univers-font;
+    .tally{
+      @include inline(0);
+      float: right;
+      text-align: right;
+      @media all and (max-width: 960px){
+        text-align: left;
+        float: none;
+      }
+      th{
+        padding-right: 2em;
+        color: $pink;  
+      }
+    }
+  }
+  #banking{
+    color: $black;
+    overflow: hidden;
+    margin-bottom: .5em;
+    border-top: 5px solid $lightgrey;
+    border-bottom: 5px solid $lightgrey;
+    @media all and (max-width: 960px){
+      padding: .5em 0;
+    }
+    h2{
+      @include inline(4em);
+      padding-right: 1em;
+    }
+    .bank{
+      @include inline(1em);
+      border-collapse: collapse;
+      @media all and (max-width: 960px){
+        margin-bottom: 1em;
+      }
+      tbody{
+        th{
+          padding-right: 2em;
+          color: $pink;  
+        }
+        tr{
+          text-align: left;
+          border-right: 1px dotted $grey;
+          border-bottom: 1px dotted $grey;
+          &:last-child{
+            border-bottom: none;
+          }
+          @media all and (max-width: 960px){
+            td{
+              word-break: break-all;
+            }
+          }
+        }
+      }
+    }
+    div{
+      @include inline(0);
+      h2{
+        color: $pink;
+      }
+    }
+  }
+}
+
+
+//--------Footer--------//
+
+footer{
+  @include layout;
+  margin-bottom: 3em;
+  overflow: hidden;
+  @media all and (max-width: 720px){
+    margin: 0 auto;
+    padding: 0;
+  }
+  @media all and (max-width: 960px){
+    padding: .5em 0;
+  }
+  h2{
+    @include inline(2em);
+    padding-right: 2em;
+    vertical-align: top;
+  }
+  .note{
+    @include inline(0);
+    vertical-align: top;
+    max-width: 62%;
+    @media all and (max-width: 960px){
+      max-width: 100%;
+      float: none;
+    }
+  }
+}
+
+
+

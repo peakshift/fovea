@@ -1,0 +1,15 @@
+{
+  "title": "Details",
+  "ref": {
+    "title": "REF",
+    "number": "0101XXXX01"
+  },
+  "invoice": {
+    "title": "INVOICE",
+    "number": "0000000018"
+  },
+  "date": {
+    "title": "written on",
+    "date": "22 January 2018"
+  }
+}
